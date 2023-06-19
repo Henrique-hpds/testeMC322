@@ -20,7 +20,7 @@ public class ChessGameDemo {
 				if((i + j) % 2 == 0)
 					f.add(botao(casaBranca, 100 * i, 100 * j ,100,100));
 				else
-					f.add(botao(casaPreta, i, j ,100,100));
+					f.add(botao(casaPreta, 100 * i, 100 * j ,100,100));
 			}
 		}
 		
