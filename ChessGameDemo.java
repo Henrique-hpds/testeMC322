@@ -1,4 +1,6 @@
+package testeMC322;
 import javax.swing.*;  
+
 public class ChessGameDemo {  
 
 	static Icon casaBranca = new ImageIcon("imagens/branco.png");
@@ -23,7 +25,7 @@ public class ChessGameDemo {
 		}
 		
 		
-		f.setSize(2000,2000);//400 width and 500 height  
+		f.setSize(2000,2000);  
 		f.setLayout(null);//using no layout managers 
 		f.setVisible(true);//making the frame visible  
 	}  
