@@ -44,6 +44,7 @@ public class Maneger{
     
     public Maneger(){
         tela = new JFrame();
+        tabuleiro = new Tabuleiro();
     }
 
     private JButton criarBotao(Icon img, int x, int y, int largura, int altura){
@@ -53,12 +54,20 @@ public class Maneger{
 	}
 
     public boolean iniciarTabuleiro(){
+        
+        JButton botao;
         for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
-				if((i + j) % 2 == 0)
-					tela.add(criarBotao(casaBege, 100 * i, 100 * j ,100,100));
-				else
-					tela.add(criarBotao(casaVerde, 100 * i, 100 * j ,100,100));
+				if((i + j) % 2 == 0){
+                    botao = criarBotao(casaBege, 100 * i, 100 * j ,100,100);
+                    
+                    tela.add(botao);
+
+                }
+				else{
+                    tela.add(criarBotao(casaVerde, 100 * i, 100 * j ,100,100));
+
+                }
 			}
 		}
         return true;

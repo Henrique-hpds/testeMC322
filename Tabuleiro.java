@@ -7,4 +7,8 @@ public class Tabuleiro {
     public Tabuleiro(){
         matrizCasas = new ArrayList<Casa>();
     }
+
+    public void setCasa(){
+        
+    }
 }
