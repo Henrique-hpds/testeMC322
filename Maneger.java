@@ -1,8 +1,14 @@
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 
 public class Maneger{
     
+    // casas vazias
+    static Icon casaBege = new ImageIcon("imagens/bege.png");
+	static Icon casaVerde = new ImageIcon("imagens/verde.png");
+
     // peças brancas
 	static Icon peaoBrancoCasaBranca = new ImageIcon("imagens/peaoBrancoCasaBranca.png");
 	static Icon peaoBrancoCasaPreta = new ImageIcon("imagens/peaoBrancoCasaPreta.png");
@@ -31,18 +37,35 @@ public class Maneger{
 	static Icon reiPretoCasaPreta = new ImageIcon("imagens/reiPretoCasaPreta.png");
 	static Icon reiPretoCasaBranca = new ImageIcon("imagens/reiPretoCasaBranca.png");
 
-
+    private JFrame tela;
     private Tabuleiro tabuleiro;
     private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
     
     public Maneger(){
-
+        tela = new JFrame();
     }
 
+    private JButton criarBotao(Icon img, int x, int y, int largura, int altura){
+		JButton b = new JButton(img);  
+		b.setBounds(x,y,largura, altura);
+		return b;
+	}
+
     public boolean iniciarTabuleiro(){
+        for (int i = 0; i < 8; i++) {
+			for (int j = 0; j < 8; j++) {
+				if((i + j) % 2 == 0)
+					tela.add(criarBotao(casaBege, 100 * i, 100 * j ,100,100));
+				else
+					tela.add(criarBotao(casaVerde, 100 * i, 100 * j ,100,100));
+			}
+		}
         return true;
     }
 
+    public JFrame getTela(){
+        return tela;
+    }
 
 }
