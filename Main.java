@@ -2,20 +2,8 @@ import javax.swing.*;
 
 public class Main {  
 
-	static Icon casaBege = new ImageIcon("imagens/bege.png");
+    static Icon casaBege = new ImageIcon("imagens/bege.png");
 	static Icon casaVerde = new ImageIcon("imagens/verde.png");
-	static Icon peaoBrancoCasaBranca = new ImageIcon("imagens/peaoBrancoCasaBranca.png");
-	static Icon peaoBrancoCasaPreta = new ImageIcon("imagens/peaoBrancoCasaPreta.png");
-	static Icon torreBrancaCasaPreta = new ImageIcon("imagens/torreBrancaCasaPreta.png");
-	static Icon torreBrancaCasaBranca = new ImageIcon("imagens/torreBrancaCasaBranca.png");
-	static Icon cavaloBrancoCasaBranca = new ImageIcon("imagens/cavaloBrancoCasaBranca");
-	static Icon cavaloBrancoCasaPreta = new ImageIcon("imagens/cavaloBrancoCasaPreta");
-	static Icon bispoBrancoCasaBranca = new ImageIcon("imagens/bispoBrancoCasaBranca");
-	static Icon bispoBrancoCasaPreta = new ImageIcon("imagens/bispoBrancoCasaPreta");
-	static Icon rainhaBrancaCasaBranca = new ImageIcon("imagens/rainhaBrancaCasaBranca");
-	static Icon rainhaBrancaCasaPreta = new ImageIcon("imagens/rainhaBrancaCasaPreta");
-	static Icon reiBrancoCasaPreta = new ImageIcon("imagens/reiBrancoCasaPreta");
-	static Icon reiBrancoCasaBranca = new ImageIcon("imagens/reiBrancoCasaBranca");
 
 	public static JButton botao(Icon img, int x, int y, int largura, int altura){
 		JButton b = new JButton(img);  
@@ -25,7 +13,10 @@ public class Main {
 
     public static void main(String[] args) {  
 
+		Maneger jogo = new Maneger();		
 		JFrame tela = new JFrame();
+
+		jogo.iniciarTabuleiro();
 
 		// inicia o tabuleiro vazio
 		for (int i = 0; i < 8; i++) {
