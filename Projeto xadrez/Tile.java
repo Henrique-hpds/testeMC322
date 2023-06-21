@@ -3,20 +3,24 @@
 import java.security.PublicKey;
 
 public abstract class Tile {
-    int tileCoordinate;
+    int coordenada_x, coordenada_y;
     //podemos fazer algo envolvendo polimorfismo para termos uma classe mae tile e ter suas classes filhas em que teremos uma para representar um vazio e outro cheio
-    public Tile(int tileCoordinate) {
-        this.tileCoordinate = tileCoordinate;
+    public Tile(int coordenada_x, int coordenada_y) {
+        this.coordenada_x = coordenada_x;
+        this.coordenada_y = coordenada_y;
     }
 
+    public int getCoordenada_x() {
+        return coordenada_x;
+    }
     //saber se ele esta ocupado ou n, sera definido em uma subclasse
     public abstract boolean isTileOccupied();
 
     public abstract Piece getPiece();
 
     public static final class EmptyTile extends Tile {
-        public EmptyTile(int tileCoordinate) {
-            super(tileCoordinate);
+        public EmptyTile(int coordenada_x, int coordenada_y) {
+            super(coordenada_x, coordenada_y);
         }
 
         @Override
@@ -35,8 +39,8 @@ public abstract class Tile {
 
         Piece pieceOnTile;
 
-        public OccupiedTile(int tileCoordinate, Piece pieceOnTile) {
-            super(tileCoordinate);
+        public OccupiedTile(int coordenada_x, int coordenada_y, Piece pieceOnTile) {
+            super(coordenada_x, coordenada_y);
             this.pieceOnTile = pieceOnTile;
         }
 
