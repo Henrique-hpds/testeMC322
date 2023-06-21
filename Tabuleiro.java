@@ -1,11 +1,8 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Tabuleiro {
-    private List<Casa> matrizCasas;
+    private Casa[][] matrizCasas;
 
     public Tabuleiro(){
-        matrizCasas = new ArrayList<Casa>();
+        matrizCasas = new Casa[8][8];
     }
 
     public void setCasa(){

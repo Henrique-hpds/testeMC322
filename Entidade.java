@@ -1,4 +1,4 @@
 public interface Entidade{
-    // public final String COR;
-    // public final String TAG;
+    public boolean criar();
+    public boolean destruir();
 }

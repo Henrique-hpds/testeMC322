@@ -5,6 +5,9 @@ public class Main {
 
 		jogo.iniciarTabuleiro();
 
+
+
+		
 		jogo.getTela().setSize(2000,2000);  
 		jogo.getTela().setLayout(null);
 		jogo.getTela().setVisible(true);  

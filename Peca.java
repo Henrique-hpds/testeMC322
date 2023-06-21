@@ -1,3 +1,6 @@
-public class Peca {
+public abstract class Peca implements Entidade{
+    public String cor;
+
+
     
 }
