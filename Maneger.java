@@ -60,7 +60,6 @@ public class Maneger{
 			for (int j = 0; j < 8; j++) {
 				if((i + j) % 2 == 0){
                     botao = criarBotao(casaBege, 100 * i, 100 * j ,100,100);
-                    
                     tela.add(botao);
 
                 }
@@ -70,6 +69,8 @@ public class Maneger{
                 }
 			}
 		}
+
+
         return true;
     }
 
