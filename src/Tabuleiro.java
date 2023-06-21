@@ -5,7 +5,7 @@ public class Tabuleiro {
         matrizCasas = new Casa[8][8];
     }
 
-    public void setCasa(){
-        
+    public Casa getCasa(int x, int y){
+        return matrizCasas[x][y];
     }
 }

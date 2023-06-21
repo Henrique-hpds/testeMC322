@@ -9,4 +9,8 @@ public class Casa{
     public Casa(){
         
     }
+
+    public void setBotao(JButton botao){
+        this.botao = botao;
+    }
 }

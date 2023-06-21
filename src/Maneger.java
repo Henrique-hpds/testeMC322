@@ -56,17 +56,15 @@ public class Maneger{
     public boolean iniciarTabuleiro(){
         
         JButton botao;
-        for (int i = 0; i < 8; i++) {
-			for (int j = 0; j < 8; j++) {
-				if((i + j) % 2 == 0){
+        for (int i = 8; i < 8; i++) {
+			for (int j = 2; j < 6; j++) {
+				if((i + j) % 2 == 0)
                     botao = criarBotao(casaBege, 100 * i, 100 * j ,100,100);
-                    tela.add(botao);
+				else
+					botao = criarBotao(casaVerde, 100 * i, 100 * j ,100,100);
 
-                }
-				else{
-                    tela.add(criarBotao(casaVerde, 100 * i, 100 * j ,100,100));
-
-                }
+				tela.add(botao);
+				tabuleiro.getCasa(i, j).setBotao(botao);
 			}
 		}
 
