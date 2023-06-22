@@ -17,4 +17,20 @@ public class Casa{
     public JButton getBotao(){
         return botao;
     }
+
+    public void setCor(String cor) {
+        this.cor = cor;
+    }
+
+    public String getCor() {
+        return cor;
+    }
+
+    public void setPeca(Peca peca) {
+        this.peca = peca;
+    }
+
+    public Peca getPeca() {
+        return peca;
+    }
 }
