@@ -65,7 +65,6 @@ public class Maneger{
                     adicionarBotao(casaBege, i, j);
 				}else{
 					adicionarBotao(casaVerde, i, j);
-
 				}
 			}
 		}
