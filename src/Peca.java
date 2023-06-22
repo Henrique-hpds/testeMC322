@@ -21,5 +21,5 @@ abstract public class Peca {
         this.posicao = posicao;
     }
 
-    abstract public ArrayList<Integer> getMovimento();
+    abstract public ArrayList<Integer> getPossiveisMovimentos();
 }
