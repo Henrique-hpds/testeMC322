@@ -2,6 +2,8 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import java.awt.Dimension;
+import java.awt.Toolkit;
 
 public class Maneger{
     
@@ -42,10 +44,11 @@ public class Maneger{
 
 	private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
-    
+     
     public Maneger(){
         tela = new JFrame();
-		tela.setSize(800, 800);
+		Dimension tamanhoTela = Toolkit.getDefaultToolkit().getScreenSize();
+		tela.setSize((int)Math.round(tamanhoTela.getWidth()), (int)Math.round(tamanhoTela.getHeight()));
         tabuleiro = new Tabuleiro();
     }
 
