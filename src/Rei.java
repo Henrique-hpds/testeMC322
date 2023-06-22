@@ -1,5 +1,7 @@
+import java.util.ArrayList;
+
 public class Rei extends Peca{
-    public void getMovimento() {
+    public ArrayList<ArrayList<Integer>> getMovimento(int posicaoX, int posicaoY) {
         
     }
 }
