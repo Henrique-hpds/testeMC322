@@ -38,6 +38,6 @@ public class Casa{
         if(getPeca() != null) {
             return true;
         }
-        return false
+        return false;
     }
 }
