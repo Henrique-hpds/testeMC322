@@ -1,4 +1,6 @@
 import javax.swing.*;
+import java.awt.event.*;
+
 
 public class Main{  
     public static void main(String[] args){  
@@ -12,9 +14,10 @@ public class Main{
 		jogo.getTela().setVisible(true);
 		
 		Icon sim = new ImageIcon("imagens/cavaloPretoCasaBranca.png");
+		jogo.getTabuleiro().getCasa(0, 0).getBotao().setPressedIcon(sim);
 
-		jogo.getTabuleiro().getCasa(0, 0).getBotao().addActionListener();
-				// jogo.getTabuleiro().getCasa(0, 0).getBotao().setIcon(sim);
+		// jogo.getTabuleiro().getCasa(0, 0).getBotao().setAction(null);
+		// 		// jogo.getTabuleiro().getCasa(0, 0).getBotao().setIcon(sim);
 		
 	}  
 }  
