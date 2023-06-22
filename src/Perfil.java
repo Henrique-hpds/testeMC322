@@ -1,6 +1,3 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
 import java.io.Serializable;
 
 public class Perfil implements Entidade, Serializable {
