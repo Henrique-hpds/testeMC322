@@ -7,6 +7,12 @@ public class Cavalo extends Peca{
     @Override
     public ArrayList<Integer> getPossiveisMovimentos() {
         List <Integer> movimentos = new ArrayList<>();
-        return ArrayList<Integer> MOVIMENTO_PADRAO = {getPosicao() -17, getPosicao() - 15,  getPosicao() - 10, getPosicao() -6, getPosicao() + 6, getPosicao() + 10, getPosicao() + 15, getPosicao() + 17};
+        
+        for (Integer n: MOVIMENTO_PADRAO){
+            if (0 < getPosicao() + n && getPosicao() + n < 63)
+                movimentos.add(getPosicao() + n);
+        }
+
+        return movimentos;
     }
 }
