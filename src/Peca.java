@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 abstract public class Peca {
     public final String cor;
     public int posicaoX, posicaoY;
@@ -28,5 +30,5 @@ abstract public class Peca {
         this.posicaoY = posicaoX;
     }
 
-    abstract public void getMovimento();
+    abstract public ArrayList<ArrayList<Integer>> getMovimento(int posicaoX, int posicaoY);
 }
