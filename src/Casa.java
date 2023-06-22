@@ -33,4 +33,11 @@ public class Casa{
     public Peca getPeca() {
         return peca;
     }
+
+    public boolean estaOcupado() { //considerando que a peca eh null por padrao
+        if(getPeca() != null) {
+            return true;
+        }
+        return false
+    }
 }
