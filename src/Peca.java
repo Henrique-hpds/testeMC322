@@ -1,4 +1,4 @@
-public class Peca {
+abstract public class Peca {
     public final String cor;
     public int posicaoX, posicaoY;
 
@@ -27,4 +27,6 @@ public class Peca {
     public void setPosicaoY() {
         this.posicaoY = posicaoX;
     }
+
+    abstract public void getMovimento();
 }
