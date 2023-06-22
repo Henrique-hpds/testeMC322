@@ -6,6 +6,6 @@ public class Cavalo extends Peca{
 
     @Override
     public ArrayList<Integer> getMovimento() {
-        
+        List <Integer> movimentos = new ArrayList<>();
     }
 }
