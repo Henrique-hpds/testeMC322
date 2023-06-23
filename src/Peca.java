@@ -27,12 +27,12 @@ public class Peca {
         this.posicao = posicao;
     }
 
-    public ArrayList<Coordenada> getPossiveisMovimentos(Coordenada [] MOVIMENTO_PADRAO) {
+    public ArrayList<Coordenada> getPossiveisMovimentos(Coordenada [] MOVIMENTO_PADRAO, Tabuleiro tabuleiro) {
         ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
         
         for (Coordenada n: MOVIMENTO_PADRAO){
             Coordenada soma = getPosicao().soma(n);
-            if (Validacao.coordenadaValida(soma))
+            if (Validacao.coordenadaValida(soma) && Validacao.casaVazia(tabuleiro, n, this))
                 movimentos.add(soma);
         }
 
