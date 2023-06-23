@@ -1,11 +1,13 @@
 import java.util.ArrayList;
 
-abstract public class Peca {
-    public final String cor;
-    public int posicao;
+public class Peca {
+    private final String cor;
+    private final int valor;
+    private Coordenada posicao;
 
-    public Peca(String cor, int posicao) {
+    public Peca(String cor, Coordenada posicao, int valor) {
         this.cor = cor;
+        this.valor = valor;
         this.posicao = posicao;
     }
 
@@ -13,13 +15,27 @@ abstract public class Peca {
         return cor;
     }
 
-    public int getPosicao() {
+    public int getValor(){
+        return valor;
+    }
+
+    public Coordenada getPosicao() {
         return posicao;
     }
 
-    public void setPosicao(int posicao) {
+    public void setPosicao(Coordenada posicao) {
         this.posicao = posicao;
     }
 
-    abstract public ArrayList<Integer> getPossiveisMovimentos();
+    public ArrayList<Coordenada> getPossiveisMovimentos(Coordenada [] MOVIMENTO_PADRAO) {
+        ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
+        
+        for (Coordenada n: MOVIMENTO_PADRAO){
+            Coordenada soma = getPosicao().soma(n);
+            if (Validacao.coordenadaValida(soma))
+                movimentos.add(soma);
+        }
+
+        return movimentos;
+    }
 }

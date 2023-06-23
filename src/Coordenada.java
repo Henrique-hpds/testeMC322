@@ -13,4 +13,8 @@ public class Coordenada{
     public int y(){
         return this.y;
     }
+
+    public Coordenada soma(Coordenada coord){
+        return new Coordenada(x + coord.x, y + coord.y);
+    }
 }
