@@ -1,12 +1,37 @@
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 
 
 public class Main{  
     public static void main(String[] args){  
 
-		Maneger jogo = new Maneger();		
+		Maneger jogo = new Maneger();
+		Perfil jBrancas, jPretas;
 
+		try {
+			ObjectInputStream input = new ObjectInputStream(new FileInputStream(""));
+
+			// fazer código para pegar nome dos jogadores
+			String jBrancasString = "Henrique", jPretasString = "Lima";
+
+			while(true){
+				Perfil perfil = (Perfil)input.readObject();
+				if(perfil.)
+			}
+
+			Perfil jBrancas;
+		}catch(EOFException fim){
+			return;
+		}catch(ClassNotFoundException naoAchouClasse){
+			
+
+		}catch(IOException exe){
+			exe.printStackTrace();
+		}
 		jogo.iniciarTabuleiro();
 		
 		jogo.getTela().setSize(2000,2000);    
