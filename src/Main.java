@@ -16,7 +16,7 @@ public class Main{
 		Icon sim = new ImageIcon("imagens/cavaloPretoCasaBranca.png");
 		jogo.getTabuleiro().getCasa(0, 0).getBotao().setPressedIcon(sim);
 
-		jogo.getTabuleiro().getCasa(0, 0).getBotao().addActionListener(new ActionListener() {
+		jogo.getTabuleiro().getCasa(1, 0).getBotao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 					//Ação
