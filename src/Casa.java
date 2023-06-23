@@ -1,3 +1,6 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 public class Casa{
@@ -39,5 +42,14 @@ public class Casa{
             return true;
         }
         return false;
+    }
+
+    public void pressionarBotao() {
+        botao.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //your actions
+            }
+        });
     }
 }
