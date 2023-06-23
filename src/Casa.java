@@ -6,8 +6,8 @@ public class Casa{
     private Peca peca;
     private JButton botao;
 
-    public Casa(){
-        
+    public Casa(String cor){
+        this.cor = cor;
     }
 
     public void setBotao(JButton botao){

@@ -6,8 +6,8 @@ import javax.swing.JFrame;
 public class Maneger{
     
     // casas vazias
-    static Icon casaBege = new ImageIcon("../imagens/bege.png");
-	static Icon casaVerde = new ImageIcon("../imagens/verde.png");
+    static Icon casaBranca = new ImageIcon("../imagens/bege.png");
+	static Icon casaPreta = new ImageIcon("../imagens/verde.png");
 
     // peças brancas
 	static Icon peaoBrancoCasaBranca = new ImageIcon("../imagens/peaoBrancoCasaBranca.png");
@@ -62,9 +62,9 @@ public class Maneger{
         for (int i = 0; i < 8; i++) {
 			for (int j = 2; j < 6; j++) {
 				if((i + j) % 2 == 0){
-                    adicionarBotao(casaBege, i, j);
+                    adicionarBotao(casaBranca, i, j);
 				}else{
-					adicionarBotao(casaVerde, i, j);
+					adicionarBotao(casaPreta, i, j);
 				}
 			}
 		}
