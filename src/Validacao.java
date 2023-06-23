@@ -9,4 +9,8 @@ public class Validacao {
 
         return true;
     }
+
+    // public static boolean casaVazia(Tabuleiro tabuleiro, Coordenada coord) {
+    //     if(tabuleiro.getCasa(coord.x(),coord.y()))
+    // }
 }
