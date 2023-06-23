@@ -14,7 +14,7 @@ public class Main{
 		jogo.getTela().setVisible(true);
 		
 		Icon sim = new ImageIcon("imagens/cavaloPretoCasaBranca.png");
-		jogo.getTabuleiro().getCasa(0, 0).getBotao().setPressedIcon(sim);
+		jogo.getTabuleiro().getCasa(1, 0).getBotao().setPressedIcon(sim);
 
 		jogo.getTabuleiro().getCasa(1, 0).getBotao().addActionListener(new ActionListener() {
 			@Override
