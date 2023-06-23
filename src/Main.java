@@ -19,7 +19,7 @@ public class Main{
 		jogo.getTabuleiro().getCasa(1, 0).getBotao().addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-					//Ação
+					System.out.println("Teste Teste");
 			}
 		});
 
