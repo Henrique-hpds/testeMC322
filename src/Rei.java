@@ -1,8 +1,14 @@
 import java.util.ArrayList;
 
 public class Rei extends Peca{
-    @Override
-    public ArrayList<Integer> getPossiveisMovimentos() {
-        
+    public Rei(String cor, Coordenada posicao){
+        super(cor, posicao, 0); // Ver a questao do valor
+    }
+
+    private final static Coordenada[] MOVIMENTO_PADRAO = {new Coordenada(-1, 0), new Coordenada(-1, -1), new Coordenada(0, -1), new Coordenada(1, -1), new Coordenada(1, 0), new Coordenada(1, 1), new Coordenada(0, 1), new Coordenada(-1, 1)};
+
+    
+    public ArrayList<Coordenada> getPossiveisMovimentos(){
+        return super.getPossiveisMovimentos(MOVIMENTO_PADRAO);
     }
 }
