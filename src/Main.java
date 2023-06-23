@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Main{  
     public static void main(String[] args){  
 
-		Maneger jogo = new Maneger();		
+		Manager jogo = new Manager();		
 
 		jogo.iniciarTabuleiro();
 		
