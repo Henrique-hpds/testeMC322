@@ -77,7 +77,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
                 jPretas = atual;
             }
 
-        Maneger jogo = new Maneger();
+        Manager jogo = new Manager();
 
         tela.setVisible(false);
 
