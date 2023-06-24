@@ -17,4 +17,8 @@ public class Coordenada{
     public Coordenada soma(Coordenada coord){
         return new Coordenada(x + coord.x, y + coord.y);
     }
+
+    public String toString(){
+        return "(" + x + ", " + y + ")";
+    }
 }
