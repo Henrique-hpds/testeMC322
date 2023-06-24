@@ -38,10 +38,4 @@ public class Peca {
 
         return movimentos;
     }
-
-    public static Peca comerPeca(Casa casa) {
-        Peca peca = casa.getPeca();
-        casa.setPeca(null);
-        return peca;
-    }
 }

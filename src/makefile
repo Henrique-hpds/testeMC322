@@ -1,9 +1,4 @@
-LAB = lab05
-
-all: compilar mover
+all: compilar
 
 compilar:
-	javac Main.java
-
-mover:
-	mv *.class ../bin
+	mkdir ../bin && javac Main.java && mv *.class ../bin && cd ../bin  && java Main && cd ../src && rm -r ../bin
