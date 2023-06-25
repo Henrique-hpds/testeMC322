@@ -1,8 +1,8 @@
-import javax.swing.JButton;
+import javax.swing.JButton; 
 import javax.swing.JFrame;
 import java.awt.event.*;
 
-public class Manager{
+public class Maneger{
 
     private JFrame tela;
     private Tabuleiro tabuleiro;
@@ -10,7 +10,7 @@ public class Manager{
 	private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
     
-    public Manager(){
+    public Maneger(){
         tela = new JFrame();
 		tela.setSize(800, 800);
         tabuleiro = new Tabuleiro();
