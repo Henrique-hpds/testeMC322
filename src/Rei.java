@@ -5,7 +5,7 @@ public class Rei extends Peca{
         super(cor, posicao, 0, "rei"); // Ver a questao do valor
     }
 
-    private final static Coordenada[] MOVIMENTO_PADRAO = {new Coordenada(-1, 0), new Coordenada(-1, -1), new Coordenada(0, -1), new Coordenada(1, -1), new Coordenada(1, 0), new Coordenada(1, 1), new Coordenada(0, 1), new Coordenada(-1, 1)};
+    //private final static Coordenada[] MOVIMENTO_PADRAO = {new Coordenada(-1, 0), new Coordenada(-1, -1), new Coordenada(0, -1), new Coordenada(1, -1), new Coordenada(1, 0), new Coordenada(1, 1), new Coordenada(0, 1), new Coordenada(-1, 1)};
 
     
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
