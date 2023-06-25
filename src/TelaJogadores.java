@@ -44,11 +44,11 @@ public class TelaJogadores extends JFrame implements ActionListener {
         opcoesBranco = new JComboBox<String>(listaJogadoresString);
         opcoesPreto = new JComboBox<String>(listaJogadoresString);
 
-	textoJogadorBranco = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "<br>Empates: " + listaJogadores.get(0).getEmpates() + "<br>Taxa Vitoria: " + listaJogadores.get(0).getTaxaVitoria() * 100 + "%</html>");
+	    textoJogadorBranco = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "<br>Empates: " + listaJogadores.get(0).getEmpates() + "<br>Taxa Vitoria: " + listaJogadores.get(0).getTaxaVitoria() * 100 + "%</html>");
         textoJogadorPreto = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "<br>Empates: " + listaJogadores.get(0).getEmpates() + "<br>Taxa Vitoria: " + listaJogadores.get(0).getTaxaVitoria() * 100 + "%</html>");
 
 	
-	opcoesBranco.addItemListener(new ItemListener() {
+	    opcoesBranco.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ev){
                 Perfil perfil = getPerfilPorNome((String)opcoesBranco.getSelectedItem());
@@ -69,7 +69,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
 
         textoPrincipal = new JLabel("Escolha o nome do jogador");
 	    
-	JButton botaoCriarConta = new JButton("Criar Conta");
+	    JButton botaoCriarConta = new JButton("Criar Conta");
         JTextField caixaTextoUsername = new JTextField("Digite um Username");
         JLabel textoCriarConta = new JLabel("Não possui uma conta? Crie aqui!");
         JLabel textoContaCriada = new JLabel("Conta criada com sucesso!");
@@ -133,7 +133,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
 	    
         tela.add(opcoesPreto);
         tela.add(opcoesBranco);
-	tela.add(textoJogadorBranco);
+	    tela.add(textoJogadorBranco);
         tela.add(textoJogadorPreto);
         tela.add(textoPrincipal);
         tela.add(botaoOK);
@@ -169,7 +169,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
             }if(atual.getUsername().equals(jPretasString)){
                 jPretas = atual;
             }
-	}
+	    }
 
         tela.setVisible(false);
         
