@@ -51,6 +51,7 @@ public class Rei extends Peca{
                 break;
             }
         }
+        //Lembrar de conferir se o caso onde a peça é movida para a mesma casa é aceito como jogada legal
         for (Coordenada coord: movimentosPossiveis){
             Coordenada soma = getPosicao().soma(coord);
             if (Validacao.coordenadaValida(soma))
