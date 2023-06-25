@@ -10,7 +10,9 @@ public class Manager{
 	private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
     
-    public Manager(){
+    public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
+        this.jogadorBrancas = jogadorBranco;
+	this.jogadorPretas = jogadorPreto;
         tela = new JFrame();
 		tela.setSize(800, 800);
         tabuleiro = new Tabuleiro();
@@ -98,6 +100,10 @@ public class Manager{
 				}
 				tela.add(botao);
 			}
+	    
+		tela.setSize(2000,2000);    
+		tela.setLayout(null);
+		tela.setVisible(true);
     }
 
     public JFrame getTela(){
