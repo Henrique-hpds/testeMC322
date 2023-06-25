@@ -4,9 +4,12 @@ public class Perfil implements Entidade, Serializable {
     private static final long serialVersionUID = 100L;
     private String username;
     private int vitorias, derrotas, empates;
+    private Dictionary<Perfil, Integer> placares; // Adversário: João -> Vitórias: 2
+
 
     public Perfil(String username){
         this.username = username;
+        this.placares = new Hashtable<>();
         vitorias = derrotas = empates = 0;
     }
     
@@ -19,6 +22,8 @@ public class Perfil implements Entidade, Serializable {
     }
 
     public double getTaxaVitoria(){
+        if (vitorias + derrotas + empates == 0)
+            return 0;
         return (vitorias) / (vitorias + derrotas + empates);
     }
 
@@ -38,6 +43,10 @@ public class Perfil implements Entidade, Serializable {
         return derrotas;
     }
 
+    public Dictionary<Perfil,Integer> getPlacares(){
+        return placares;
+    }
+
     public void adicionarVitoria(){
         vitorias++;
     }
@@ -50,6 +59,10 @@ public class Perfil implements Entidade, Serializable {
         derrotas++;
     }
 
+    // adiciona uma vitória ao placar relativo a outro player
+    public void adicionarPlacar(Perfil oponente){
+        placares.put(oponente, placares.get(oponente) + 1);
+    }
 
 
 }
