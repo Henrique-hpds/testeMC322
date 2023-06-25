@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Peca {
+abstract public class Peca {
     private final String cor;
     private final int valor;
     private Coordenada posicao;
@@ -40,7 +40,8 @@ public class Peca {
         this.posicao = posicao;
     }
 
-    // public ArrayList<Coordenada> getPossiveisMovimentos(Coordenada [] MOVIMENTO_PADRAO, Tabuleiro tabuleiro) {
+    abstract public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro);
+    // {
     //     ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
         
     //     for (Coordenada coord: MOVIMENTO_PADRAO){
