@@ -4,7 +4,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 
-public class Maneger{
+public class Manager{
 
     private JFrame tela;
     private Tabuleiro tabuleiro;
@@ -12,7 +12,7 @@ public class Maneger{
 	private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
 
-    public Maneger(){
+    public Manager(){
         tela = new JFrame();
 		tela.setSize(800, 800);
         tabuleiro = new Tabuleiro();

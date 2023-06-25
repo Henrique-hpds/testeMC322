@@ -3,7 +3,7 @@ import javax.swing.*;
 public class Main{  
     public static void main(String[] args){  
 
-		// Maneger jogo = new Maneger();
+		// Manager jogo = new Manager();
 
 		TelaJogadores telaJogadores = new TelaJogadores();
 		Perfil jPretas = telaJogadores.getJPretas();
