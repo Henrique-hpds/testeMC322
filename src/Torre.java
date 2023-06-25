@@ -10,21 +10,23 @@ public class Torre extends Peca{
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
         for(int i = -7; i <= 7; i++) {
-            if(!tabuleiro.getCasa(i, 0).estaOcupado() || !tabuleiro.getCasa(i, 0).getCor().equals(getCor())) {
-                Coordenada coord = new Coordenada(i, 0);
-                movimentosPossiveis.add(coord);
+            Coordenada coord = new Coordenada(i, 0);
+            Coordenada soma = getPosicao().soma(coord);
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
             }
             else {
                 break;
             }
         }
         for(int i = -7; i <= 7; i++) {
-            if(!tabuleiro.getCasa(0, i).estaOcupado() || !tabuleiro.getCasa(0, i).getCor().equals(getCor())) {
-                Coordenada coord = new Coordenada(0, i);
-                movimentosPossiveis.add(coord);
+            Coordenada coord = new Coordenada(0, i);
+            Coordenada soma = getPosicao().soma(coord);
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
             }
             else {
-               break;
+                break;
             }
         }
         for (Coordenada coord: movimentosPossiveis){

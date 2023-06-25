@@ -12,17 +12,19 @@ public class Bispo extends Peca{
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
         for(int i = -7; i <= 7; i++) {
-            if(!tabuleiro.getCasa(i, i).estaOcupado() || !tabuleiro.getCasa(i, i).getCor().equals(getCor())) {
-                Coordenada coord = new Coordenada(i, i);
-                movimentosPossiveis.add(coord);
+            Coordenada coord = new Coordenada(i, i);
+            Coordenada soma = getPosicao().soma(coord);
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
             }
             else {
                 break;
             }
         }
         for(int i = -7; i <= 7; i++) {
-            if(!tabuleiro.getCasa(-i, i).estaOcupado() || !tabuleiro.getCasa(-i, i).getCor().equals(getCor())) {
-                Coordenada coord = new Coordenada(-i, i);
+            Coordenada coord = new Coordenada(i, i);
+            Coordenada soma = getPosicao().soma(coord);
+            if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(-soma.x(), soma.y()).getCor().equals(getCor())) {
                 movimentosPossiveis.add(coord);
             }
             else {
