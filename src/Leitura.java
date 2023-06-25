@@ -1,9 +1,7 @@
 import java.io.EOFException;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class Leitura {
@@ -26,25 +24,5 @@ public class Leitura {
         }
 
         return listaJogadoresPossiveis;
-    }
-	
-	public static boolean gravarPerfil(Perfil perfil){
-
-        ArrayList<Perfil> listaPerfils = lerPossiveisJogadores();
-        listaPerfils.add(perfil);
-
-        try{
-            ObjectOutputStream output = new ObjectOutputStream(new FileOutputStream("../dadosJogadores/jogadores.ser"));
-            for (Perfil atual : listaPerfils) {
-                output.writeObject(atual);
-            }
-            output.flush();
-            output.close();
-        }catch(IOException excecao){
-            excecao.printStackTrace();
-            return false;
-        }
-
-        return true;
     }
 }
