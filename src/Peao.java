@@ -15,20 +15,32 @@ public class Peao extends Peca{
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro) {
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
+
+        ArrayList <Coordenada> limites = new ArrayList<Coordenada>();
+
+        for(int i = 0; i <= 7; i++) {
+            for(int j = 0; j <= 7; j++) {
+                Coordenada coord = new Coordenada(i, j);
+                limites.add(coord);
+            }
+        }
+
         if(primeiraJogada) {
             //Aplicar aqui condições para primeira jogada (andar duas casas)
             for(int i = 0; i <= 2; i++) {
                 Coordenada coord = new Coordenada(i, 0);
                 Coordenada soma = getPosicao().soma(coord);
-                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                    movimentosPossiveis.add(soma);
-                }
-                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                    movimentosPossiveis.add(soma);
-                    break;
-                }
-                else {
-                    break;
+                if(limites.contains(soma)) {
+                    if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                        movimentosPossiveis.add(soma);
+                    }
+                    else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                        movimentosPossiveis.add(soma);
+                        break;
+                    }
+                    else {
+                        break;
+                    }
                 }
             }
         }
@@ -37,15 +49,17 @@ public class Peao extends Peca{
                 for(int i = 0; i <= 1; i++) {
                 Coordenada coord = new Coordenada(i, 0);
                 Coordenada soma = getPosicao().soma(coord);
-                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                    movimentosPossiveis.add(soma);
-                }
-                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                    movimentosPossiveis.add(soma);
-                    break;
-                }
-                else {
-                    break;
+                if(limites.contains(soma)) {
+                    if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                        movimentosPossiveis.add(soma);
+                    }
+                    else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                        movimentosPossiveis.add(soma);
+                        break;
+                    }
+                    else {
+                        break;
+                    }
                 }
             }
         }

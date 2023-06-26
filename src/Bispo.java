@@ -12,37 +12,49 @@ public class Bispo extends Peca{
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
 
-        for (Coordenada coord: movimentosPossiveis){
-            if (Validacao.coordenadaValida(coord))
-                movimentosPossiveis.add(coord);
+        ArrayList <Coordenada> limites = new ArrayList<Coordenada>();
+
+        for(int i = 0; i <= 7; i++) {
+            for(int j = 0; j <= 7; j++) {
+                Coordenada coord = new Coordenada(i, j);
+                limites.add(coord);
+            }
         }
+        // for (Coordenada coord: movimentosPossiveis){
+        //     if (Validacao.coordenadaValida(coord))
+        //         movimentosPossiveis.add(coord);
+        // }
 
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                movimentosPossiveis.add(soma);
-            }
-            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
+            if(limites.contains(soma)) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    break;
+                }
             }
         }
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
-                movimentosPossiveis.add(coord);
-            }
-            else if(!tabuleiro.getCasa(-soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
+            if(limites.contains(soma)) {
+                if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(coord);
+                }
+                else if(!tabuleiro.getCasa(-soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    break;
+                }
             }
         }
         return movimentosLegais;

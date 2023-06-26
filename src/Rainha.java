@@ -12,72 +12,106 @@ public class Rainha extends Peca{
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
-        //Movimentação na primeira diagonal
-        for(int i = -7; i <= 7; i++) {
-            Coordenada coord = new Coordenada(i, i);
-            Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-            }
-            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
-            }
-        }
-        //Movimentação na segunda diagonal
-        for(int i = -7; i <= 7; i++) {
-            Coordenada coord = new Coordenada(i, i);
-            Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
-                movimentosPossiveis.add(coord);
-            }
-            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
-            }
-        }
-        //Movimentação em linha na horizontal
-        for(int i = -7; i <= 7; i++) {
-            Coordenada coord = new Coordenada(i, 0);
-            Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                movimentosPossiveis.add(soma);
-            }
-            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
-            }
-        }
-        //Movimentação em linha na vertical
-        for(int i = -7; i <= 7; i++) {
-            Coordenada coord = new Coordenada(0, i);
-            Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                movimentosPossiveis.add(soma);
-            }
-            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                movimentosPossiveis.add(soma);
-                break;
-            }
-            else {
-                break;
-            }
-        }
-        //Lembrar de conferir se o caso onde a peça é movida para a mesma casa é aceito como jogada legal
-        for (Coordenada coord: movimentosPossiveis){
-            //Coordenada soma = getPosicao().soma(coord);
-            if (Validacao.coordenadaValida(coord))
-                movimentosLegais.add(coord);
-        }
+        ArrayList <Coordenada> movimentosVertical = new ArrayList<Coordenada>();
+        ArrayList <Coordenada> movimentosHorizontal = new ArrayList<Coordenada>();
+        ArrayList <Coordenada> movimentosDiagonal1 = new ArrayList<Coordenada>();
+        ArrayList <Coordenada> movimentosDiagonal2 = new ArrayList<Coordenada>();
+
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(i, 0);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(soma))
+        //         movimentosHorizontal.add(soma);
+        // }
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(0, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(soma))
+        //         movimentosVertical.add(soma);
+        // }
+
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(i, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(soma))
+        //         movimentosDiagonal1.add(soma);
+        // }
+
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(-i, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(soma))
+        //         movimentosDiagonal2.add(soma);
+        // }
+
+
+
+        // //Movimentação na primeira diagonal
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(i, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+        //         movimentosPossiveis.add(soma);
+        //     }
+        //     else if(!tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+        //         movimentosPossiveis.add(soma);
+        //         break;
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+        // //Movimentação na segunda diagonal
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(i, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
+        //         movimentosPossiveis.add(coord);
+        //     }
+        //     else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+        //         movimentosPossiveis.add(soma);
+        //         break;
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+        // //Movimentação em linha na horizontal
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(i, 0);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+        //         movimentosPossiveis.add(soma);
+        //     }
+        //     else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+        //         movimentosPossiveis.add(soma);
+        //         break;
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+        // //Movimentação em linha na vertical
+        // for(int i = -7; i <= 7; i++) {
+        //     Coordenada coord = new Coordenada(0, i);
+        //     Coordenada soma = getPosicao().soma(coord);
+        //     if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+        //         movimentosPossiveis.add(soma);
+        //     }
+        //     else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+        //         movimentosPossiveis.add(soma);
+        //         break;
+        //     }
+        //     else {
+        //         break;
+        //     }
+        // }
+        // //Lembrar de conferir se o caso onde a peça é movida para a mesma casa é aceito como jogada legal
+        // for (Coordenada coord: movimentosPossiveis){
+        //     //Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(coord))
+        //         movimentosLegais.add(coord);
+        // }
         return movimentosLegais;
     }
 }
