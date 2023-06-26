@@ -5,7 +5,7 @@ public class PecaNull extends Peca{
         super("", null, 0, "");
     }
     
-    public ArrayList<Coordenada> getPossiveisMovimentos(){
+    public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         return new ArrayList<Coordenada>();
     }
 }

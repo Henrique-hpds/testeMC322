@@ -31,9 +31,9 @@ public class Manager{
 				tela.add(botao);
 			}
 	    
-		//tela.setSize(2000,2000);    
-		//tela.setLayout(null);
-		//tela.setVisible(true);
+		tela.setSize(2000,2000);    
+		tela.setLayout(null);
+		tela.setVisible(true);
     }
 
     public JFrame getTela(){
