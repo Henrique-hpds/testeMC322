@@ -9,7 +9,7 @@ public class Peao extends Peca{
         this.primeiraJogada = true;
     }
 
-    private final static Coordenada[] MOVIMENTO_PADRAO = {new Coordenada(0, 1), new Coordenada(0, 2), new Coordenada(-1, 1), new Coordenada(1, 1), new Coordenada(0, -1), new Coordenada(0, -2), new Coordenada(-1, -1), new Coordenada(1, -1)};
+    //private final static Coordenada[] MOVIMENTO_PADRAO = {new Coordenada(0, 1), new Coordenada(0, 2), new Coordenada(-1, 1), new Coordenada(1, 1), new Coordenada(0, -1), new Coordenada(0, -2), new Coordenada(-1, -1), new Coordenada(1, -1)};
 
     //Atenção para as condições especiais de primeira jogada, usar a boolean "primeiraJogada"
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro) {
@@ -17,11 +17,43 @@ public class Peao extends Peca{
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
         if(primeiraJogada) {
             //Aplicar aqui condições para primeira jogada (andar duas casas)
+            for(int i = 0; i <= 2; i++) {
+                Coordenada coord = new Coordenada(i, 0);
+                Coordenada soma = getPosicao().soma(coord);
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    break;
+                }
+            }
         }
         else {
             //Restante
+                for(int i = 0; i <= 1; i++) {
+                Coordenada coord = new Coordenada(i, 0);
+                Coordenada soma = getPosicao().soma(coord);
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    break;
+                }
+            }
+        }
+        for (Coordenada coord: movimentosPossiveis){
+            //Coordenada soma = getPosicao().soma(coord);
+            if (Validacao.coordenadaValida(coord))
+                movimentosLegais.add(coord);
         }
         return movimentosLegais;
-        //return super.getPossiveisMovimentos(MOVIMENTO_PADRAO, tabuleiro);
     }
 }

@@ -10,13 +10,20 @@ public class Cavalo extends Peca{
 
     
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
-        //ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
+        ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
+
         for (Coordenada coord: MOVIMENTO_PADRAO){
             Coordenada soma = getPosicao().soma(coord);
             if (Validacao.coordenadaValida(soma))
-                movimentosLegais.add(soma);
+                movimentosPossiveis.add(soma);
         }
+        for (Coordenada coord: movimentosPossiveis){
+            if(!tabuleiro.getCasa(coord.x(), coord.y()).estaOcupado() || !tabuleiro.getCasa(coord.x(), coord.y()).getPeca().getCor().equals(getCor())) {
+                movimentosLegais.add(coord);
+            }
+        }
+
         return movimentosLegais;
     }
 }

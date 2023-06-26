@@ -1,23 +1,31 @@
+import java.awt.Font;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.swing.JButton;   
 import javax.swing.JFrame;
-import java.awt.event.*;
-import java.util.ArrayList;
-
-
+import javax.swing.JLabel;
 public class Manager{
 
     private JFrame tela;
     private Tabuleiro tabuleiro;
 
 	private Perfil jogadorBrancas, jogadorPretas;
-    private int pontuacaoBrancas, pontuacaoPretas;
-    
+	private List<Peca> pecasPretasCapturadas, pecasBrancasCapturadas;
+	
     public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
         this.jogadorBrancas = jogadorBranco;
 		this.jogadorPretas = jogadorPreto;
-        tela = new JFrame();
-		tela.setSize(800, 800);
-        tabuleiro = new Tabuleiro();
+
+		pecasPretasCapturadas = new ArrayList<Peca>();
+		pecasBrancasCapturadas = new ArrayList<Peca>();
+
+		tela = new JFrame();
+		tela.setSize(1300, 837);
+		tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		tabuleiro = new Tabuleiro();
 		tabuleiro.posicaoInicialTabuleiro();
 
 		for (int i = 0; i < 8; i++)
@@ -30,8 +38,25 @@ public class Manager{
 
 				tela.add(botao);
 			}
+
+		JLabel nomeBrancas = new JLabel(jogadorBranco.getUsername());
+		JLabel nomePretas = new JLabel(jogadorPreto.getUsername());
 	    
-		tela.setSize(2000,2000);    
+		nomeBrancas.setBounds(880, 30, 110, 30);
+		nomePretas.setBounds(1080, 30, 110, 30);
+
+	// 	try {
+    // 		lab.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("/CUSTOMFONT-MEDIUM.TTF").openStream()));
+    // } catch(IOException ex){
+    // //exception handled here I suppose  
+    // } catch(FontFormatException ex2) {
+    // //same here
+    // }
+	// 	nomeBrancas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes")));
+
+		tela.add(nomeBrancas);
+		tela.add(nomePretas);
+
 		tela.setLayout(null);
 		tela.setVisible(true);
     }

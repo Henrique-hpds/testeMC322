@@ -11,12 +11,22 @@ public class Bispo extends Peca{
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
         ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
+
+        for (Coordenada coord: movimentosPossiveis){
+            if (Validacao.coordenadaValida(coord))
+                movimentosPossiveis.add(coord);
+        }
+
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                 movimentosPossiveis.add(soma);
             }
+            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
+                break;
+            }
             else {
                 break;
             }
@@ -24,17 +34,16 @@ public class Bispo extends Peca{
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(-soma.x(), soma.y()).getCor().equals(getCor())) {
+            if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
                 movimentosPossiveis.add(coord);
+            }
+            else if(!tabuleiro.getCasa(-soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
+                break;
             }
             else {
                 break;
             }
-        }
-        for (Coordenada coord: movimentosPossiveis){
-            Coordenada soma = getPosicao().soma(coord);
-            if (Validacao.coordenadaValida(soma))
-                movimentosLegais.add(soma);
         }
         return movimentosLegais;
     }

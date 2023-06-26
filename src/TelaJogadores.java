@@ -93,7 +93,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
                 if(nomeEscolhido.equals("Digite um Username") || nomeEscolhido.equals("") || nomeEscolhido.equals("\n"))
                     return;
                 
-		for (String atual : listaJogadoresString) {
+		        for (String atual : listaJogadoresString) {
                     if(atual.equals(nomeEscolhido)){
                         textoCriarConta.setText("Username indisponivel. Tente Novamente!");
                         caixaTextoUsername.setText("Digite um Username");
@@ -117,8 +117,13 @@ public class TelaJogadores extends JFrame implements ActionListener {
                 textoContaCriada.setVisible(true);
             }
         });
+
+        JLabel tituloJogadorBranco = new JLabel("Brancas");
+        JLabel tituloJogadorPreto = new JLabel("Pretas");
 	    
-        textoPrincipal.setBounds(150, 50, 400, 100);
+        textoPrincipal.setBounds(150, 40, 400, 100);
+        tituloJogadorBranco.setBounds(100, 110, 100, 20);
+        tituloJogadorPreto.setBounds(300, 110, 100, 20);
         opcoesBranco.setBounds(100, 130, 150, 50);
         opcoesPreto.setBounds(300, 130, 150, 50);
         botaoOK.setBounds(500, 130, 70, 70);
@@ -142,6 +147,8 @@ public class TelaJogadores extends JFrame implements ActionListener {
         tela.add(caixaTextoUsername);
         tela.add(textoCriarConta);
         tela.add(textoContaCriada);
+        tela.add(tituloJogadorBranco);
+        tela.add(tituloJogadorPreto);
 
         tela.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 

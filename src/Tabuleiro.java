@@ -44,11 +44,10 @@ public class Tabuleiro {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
                 if((i + j) % 2 == 0)
-                    matrizCasas[i][j] =  new Casa("Preto");
+                    matrizCasas[i][j] =  new Casa("Preto", i, j);
 				else
-					matrizCasas[i][j] =  new Casa("Branco");
-				matrizCasas[i][j].setPeca(new PecaNull());
-
+					matrizCasas[i][j] =  new Casa("Branco",  i, j);
+				matrizCasas[i][j].setPeca(null);
             }
 		
     }
@@ -147,8 +146,13 @@ public class Tabuleiro {
         return matrizCasas[x][y];
     }
 
-	public boolean moverPeca(Casa casa, ArrayList<Coordenada> possiveisMovimentos){
-		return true;
-	}
+	public void adicionarIconeCasa(Casa casa){
+		int i = casa.getCoordenada().x();
+		int j = casa.getCoordenada().y();
+		if((i + j) % 2 == 0)
+		 	casa.getBotao().setIcon(casaBranca);
+		else
+		 	casa.getBotao().setIcon(casaPreta);
 
+	}
 }

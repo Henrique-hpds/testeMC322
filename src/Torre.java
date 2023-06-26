@@ -12,8 +12,12 @@ public class Torre extends Peca{
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, 0);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                 movimentosPossiveis.add(soma);
+            }
+            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
+                break;
             }
             else {
                 break;
@@ -22,17 +26,21 @@ public class Torre extends Peca{
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(0, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado() || !tabuleiro.getCasa(soma.x(), soma.y()).getCor().equals(getCor())) {
+            if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                 movimentosPossiveis.add(soma);
+            }
+            else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                movimentosPossiveis.add(soma);
+                break;
             }
             else {
                 break;
             }
         }
         for (Coordenada coord: movimentosPossiveis){
-            Coordenada soma = getPosicao().soma(coord);
-            if (Validacao.coordenadaValida(soma))
-                movimentosLegais.add(soma);
+            //Coordenada soma = getPosicao().soma(coord);
+            if (Validacao.coordenadaValida(coord))
+                movimentosLegais.add(coord);
         }
         return movimentosLegais;
     }

@@ -8,9 +8,11 @@ public class Casa{
     private String cor;
     private Peca peca;
     private JButton botao;
+    private final Coordenada coord;
 
-    public Casa(String cor){
+    public Casa(String cor, int x, int y){
         this.cor = cor;
+        this.coord = new Coordenada(x, y);
     }
 
     public void setBotao(JButton botao){
@@ -37,11 +39,15 @@ public class Casa{
         return peca;
     }
 
+    public Coordenada getCoordenada() {
+        return coord;
+    }
+
     public boolean estaOcupado() { //considerando que a peca eh null por padrao
-        if(getPeca().getValor() == 0) {
-            return true;
+        if(getPeca() == null) {
+            return false;
         }
-        return false;
+        return true;
     }
 
     public void pressionarBotao() {

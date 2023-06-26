@@ -6,12 +6,12 @@ abstract public class Peca {
     private Coordenada posicao;
     private final String tag;
 
-    public Peca() {
-        this.cor = "";
-        this.valor = 0;
-        this.posicao = null;
-        this.tag = "";
-    }
+    // public Peca() {
+    //     this.cor = "";
+    //     this.valor = 0;
+    //     this.posicao = null;
+    //     this.tag = "";
+    // }
 
     public Peca(String cor, Coordenada posicao, int valor, String tag) {
         this.cor = cor;
