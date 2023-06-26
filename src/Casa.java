@@ -38,7 +38,7 @@ public class Casa{
     }
 
     public boolean estaOcupado() { //considerando que a peca eh null por padrao
-        if(getPeca() != null) {
+        if(getPeca().getValor() == 0) {
             return true;
         }
         return false;

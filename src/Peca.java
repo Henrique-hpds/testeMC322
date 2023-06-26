@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 
-public class Peca {
+abstract public class Peca {
     private final String cor;
     private final int valor;
     private Coordenada posicao;
     private final String tag;
+
+    public Peca() {
+        this.cor = "";
+        this.valor = 0;
+        this.posicao = null;
+        this.tag = "";
+    }
 
     public Peca(String cor, Coordenada posicao, int valor, String tag) {
         this.cor = cor;
@@ -33,18 +40,18 @@ public class Peca {
         this.posicao = posicao;
     }
 
-    public ArrayList<Coordenada> getPossiveisMovimentos(Coordenada [] MOVIMENTO_PADRAO, Tabuleiro tabuleiro) {
-        ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
+    abstract public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro);
+    // {
+    //     ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
         
-        for (Coordenada coord: MOVIMENTO_PADRAO){
-            Coordenada soma = getPosicao().soma(coord);
-            //if (Validacao.coordenadaValida(soma) && Validacao.casaVazia(tabuleiro, soma, this))
-            if (Validacao.coordenadaValida(soma))
-                movimentos.add(soma);
-        }
+    //     for (Coordenada coord: MOVIMENTO_PADRAO){
+    //         Coordenada soma = getPosicao().soma(coord);
+    //         if (Validacao.coordenadaValida(soma))
+    //             movimentos.add(soma);
+    //     }
 
-        return movimentos;
-    }
+    //     return movimentos;
+    // }
 
     public static Peca comerPeca(Casa casa) {
         Peca peca = casa.getPeca();

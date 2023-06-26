@@ -1,6 +1,8 @@
 import javax.swing.JButton;   
 import javax.swing.JFrame;
 import java.awt.event.*;
+import java.util.ArrayList;
+
 
 public class Manager{
 
@@ -12,7 +14,7 @@ public class Manager{
     
     public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
         this.jogadorBrancas = jogadorBranco;
-	this.jogadorPretas = jogadorPreto;
+		this.jogadorPretas = jogadorPreto;
         tela = new JFrame();
 		tela.setSize(800, 800);
         tabuleiro = new Tabuleiro();
@@ -22,88 +24,16 @@ public class Manager{
             for (int j = 0; j < 8; j++){
 				Casa casa = tabuleiro.getCasa(i, j);
 				JButton botao = casa.getBotao();
-				Peca peca = casa.getPeca();
 
-				if(peca.getTag().equals("peao")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("peao");
-							for(Coordenada coord: ((Peao)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else if(peca.getTag().equals("torre")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("torre");
-							for(Coordenada coord: ((Torre)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else if(peca.getTag().equals("cavalo")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("cavalo");
-							for(Coordenada coord: ((Cavalo)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else if(peca.getTag().equals("bispo")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("bispo");
-							for(Coordenada coord: ((Bispo)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else if(peca.getTag().equals("rainha")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("rainha");
-							for(Coordenada coord: ((Rainha)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else if(peca.getTag().equals("rei")){
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("rei");
-							for(Coordenada coord: ((Rei)peca).getPossiveisMovimentos(tabuleiro)){
-								System.out.println(coord.toString());
-							}
-						}
-					});
-				}
-				else{
-					botao.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							System.out.println("Outra Peça");
-						}
-					});
-				}
+				TestListener teste = new TestListener(casa, tabuleiro);
+				casa.getBotao().addActionListener(teste);
+
 				tela.add(botao);
 			}
 	    
-		tela.setSize(2000,2000);    
-		tela.setLayout(null);
-		tela.setVisible(true);
+		//tela.setSize(2000,2000);    
+		//tela.setLayout(null);
+		//tela.setVisible(true);
     }
 
     public JFrame getTela(){

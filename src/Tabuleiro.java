@@ -1,6 +1,8 @@
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.util.ArrayList;
+import java.awt.event.*;
 
 
 public class Tabuleiro {
@@ -144,5 +146,9 @@ public class Tabuleiro {
     public Casa getCasa(int x, int y){
         return matrizCasas[x][y];
     }
+
+	public boolean moverPeca(Casa casa, ArrayList<Coordenada> possiveisMovimentos){
+		return true;
+	}
 
 }
