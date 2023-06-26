@@ -12,13 +12,14 @@ public class Manager{
 	private Perfil jogadorBrancas, jogadorPretas;
     private int pontuacaoBrancas, pontuacaoPretas;
 
-    public Manager(){
+    public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
+		this.jogadorBrancas = jogadorBranco;
+		this.jogadorPretas = jogadorPreto;
         tela = new JFrame();
 		tela.setSize(800, 800);
         tabuleiro = new Tabuleiro();
 		tabuleiro.posicaoInicialTabuleiro();
 		
-
 		for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
 				Casa casa = tabuleiro.getCasa(i, j);
@@ -29,6 +30,10 @@ public class Manager{
 
 				tela.add(botao);
 			}
+
+		//tela.setSize(2000,2000);    
+		//tela.setLayout(null);
+		//tela.setVisible(true);
     }
 
     public JFrame getTela(){

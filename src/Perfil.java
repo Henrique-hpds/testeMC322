@@ -1,5 +1,6 @@
 import java.io.Serializable;
 
+
 public class Perfil implements Entidade, Serializable {
     private static final long serialVersionUID = 100L;
     private String username;
