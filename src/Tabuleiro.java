@@ -4,6 +4,7 @@ import javax.swing.JButton;
 import java.util.ArrayList;
 public class Tabuleiro {
 	private String jogador = "branco";
+	// private boolean foiChamada = false;
     private Casa[][] matrizCasas;
     // casas vazias
     private static final Icon casaBranca = new ImageIcon("../imagens/bege.png");
@@ -269,6 +270,7 @@ public class Tabuleiro {
 				}
 				else if(tipo.equals("rei")){
 					System.out.println("Rei");
+					((Rei)peca).setSelecionado(true);
 					TestListener.setListaMovimentos(((Rei)peca).getPossiveisMovimentos(this));  
 				}
 			}  
@@ -294,7 +296,10 @@ public class Tabuleiro {
 				destino.getPeca().setPosicao(destino.getCoordenada());
 				if(destino.getPeca().getTag().equals("peao")) // Caso especial para o peao
 					((Peao)destino.getPeca()).setPrimeiraJogada(false);
-					
+
+				else if(destino.getPeca().getTag().equals("rei"))
+					((Rei)destino.getPeca()).setSelecionado(false);
+
 				if (destino.getPeca().getCor().equals("branco"))
 					jogador = "preto";
 				else
@@ -305,8 +310,51 @@ public class Tabuleiro {
 		return true;
 	}
 
-	// public ArrayList<Coordenada> todoMovimentosJogador(String jogador){
+	public ArrayList<Coordenada> todoMovimentosJogador(String jogador){
+		ArrayList<Coordenada> listaMovimentos = new ArrayList<Coordenada>();
+		for(int i = 0; i < 8; i++){
+			for(int j = 0; j < 8; j++){
+				if(getCasa(i, j).estaOcupado() && getCasa(i, j).getPeca().getCor().equals(jogador)){
+					Peca peca = getCasa(i, j).getPeca();						
+					String tipo = peca.getTag();
 
-	// }
+					if(tipo.equals("peao")){
+						for(Coordenada movimento: ((Peao)peca).getPossiveisMovimentos(this))							
+							listaMovimentos.add( movimento);
+					}
+					else if(tipo.equals("torre")){
+						for(Coordenada movimento:((Torre)peca).getPossiveisMovimentos(this))
+							listaMovimentos.add( movimento);     
+					}
+					else if(tipo.equals("cavalo")){
+						for(Coordenada movimento:((Cavalo)peca).getPossiveisMovimentos(this))
+							listaMovimentos.add( movimento);
+					}
+					else if(tipo.equals("bispo")){
+						for(Coordenada movimento:((Bispo)peca).getPossiveisMovimentos(this))
+							listaMovimentos.add( movimento); 
+					}
+					else if(tipo.equals("rainha")){
+						for(Coordenada movimento:((Rainha)peca).getPossiveisMovimentos(this))
+							listaMovimentos.add( movimento);
+					}
+					else if(tipo.equals("rei")){
+						if(!((Rei)peca).isSelecionado())
+							for(Coordenada movimento:((Rei)peca).getPossiveisMovimentos(this))
+								listaMovimentos.add( movimento);
+						else{
+							((Rei)peca).setSelecionado(false);
+						}
+					}
+				}
+			}
+		}
+		// else{
+		// 	foiChamada = false;
+
+		// }
+		System.out.print(listaMovimentos);
+		return listaMovimentos;
+	}
 
 }
