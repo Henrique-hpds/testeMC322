@@ -1,4 +1,5 @@
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -6,6 +7,7 @@ import java.util.List;
 import javax.swing.JButton;   
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+
 public class Manager{
 
     private JFrame tela;
@@ -45,14 +47,15 @@ public class Manager{
 		nomeBrancas.setBounds(880, 30, 110, 30);
 		nomePretas.setBounds(1080, 30, 110, 30);
 
-	// 	try {
-    // 		lab.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("/CUSTOMFONT-MEDIUM.TTF").openStream()));
-    // } catch(IOException ex){
-    // //exception handled here I suppose  
-    // } catch(FontFormatException ex2) {
-    // //same here
-    // }
-	// 	nomeBrancas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes")));
+		try {
+			nomePretas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes/BebasNeue-Regular.ttf").openStream()));
+			nomeBrancas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes/BebasNeue-Regular.ttf").openStream()));
+		} catch(IOException ex){}
+		catch(FontFormatException ex2) {
+			nomeBrancas.setFont(new Font("Arial", Font.BOLD, 12));
+			nomePretas.setFont(new Font("Arial", Font.BOLD, 12));	
+
+		}
 
 		tela.add(nomeBrancas);
 		tela.add(nomePretas);

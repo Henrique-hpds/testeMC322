@@ -21,14 +21,20 @@ public class TestListener implements ActionListener{
             if(tipo.equals("peao")){
                 System.out.println("Peao");
                 listaMovimentos = ((Peao)peca).getPossiveisMovimentos(tabuleiro);
+                for(Coordenada coord: listaMovimentos)
+                    System.out.println(coord);
             }
             else if(tipo.equals("torre")){
                 System.out.println("Torre");
-                listaMovimentos = ((Torre)peca).getPossiveisMovimentos(tabuleiro);     
+                listaMovimentos = ((Torre)peca).getPossiveisMovimentos(tabuleiro);    
+                for(Coordenada coord: listaMovimentos)
+                    System.out.println(coord); 
             }
             else if(tipo.equals("cavalo")){
                 System.out.println("Cavalo");
                 listaMovimentos = ((Cavalo)peca).getPossiveisMovimentos(tabuleiro);
+                for(Coordenada coord: listaMovimentos)
+                    System.out.println(coord);
             }
             else if(tipo.equals("bispo")){
                 System.out.println("Bispo"); 
@@ -44,12 +50,14 @@ public class TestListener implements ActionListener{
             }
         }
         else{
-            Coordenada localCasaAtual = casa.getCoordenada();
+            Coordenada localCasaDestino = casa.getCoordenada();
             for(Coordenada coord: listaMovimentos){
-                if(localCasaAtual.x() == coord.x() && localCasaAtual.y() == coord.y()){
+                if(localCasaDestino.x() == coord.x() && localCasaDestino.y() == coord.y()){
                     System.out.println("Local valido");
                     casa.getBotao().setIcon(casaSelecionada.getBotao().getIcon());
                     tabuleiro.adicionarIconeCasa(casaSelecionada);
+                    casa.setPeca(casaSelecionada.getPeca());
+                    casaSelecionada.setPeca(null);
                     break;
                 }
 
