@@ -164,8 +164,8 @@ public class TelaJogadores extends JFrame implements ActionListener {
             return;
         }
         
-        String jBrancasString, jPretasString;
-	Perfil jBrancas = null, jPretas = null;
+        String jBrancasString= "", jPretasString = "";
+	    Perfil jBrancas = new Perfil(jBrancasString), jPretas =new Perfil(jPretasString);
 
         jBrancasString = (String)opcoesBranco.getSelectedItem();
         jPretasString = (String)opcoesPreto.getSelectedItem();
@@ -180,10 +180,6 @@ public class TelaJogadores extends JFrame implements ActionListener {
 
         tela.setVisible(false);
         
-        try{
-            new Manager(jBrancas, jPretas);
-        }catch(NullPointerException ex){
-            return;
-        }
+        new Manager(jBrancas, jPretas);
     }
 }

@@ -2,9 +2,6 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.ArrayList;
-import java.awt.event.*;
-
-
 public class Tabuleiro {
     private Casa[][] matrizCasas;
     // casas vazias
@@ -155,4 +152,31 @@ public class Tabuleiro {
 		 	casa.getBotao().setIcon(casaPreta);
 
 	}
+
+	public void trocarIcone(Peca peca, Casa casa){
+		if(peca.getTag().equals("peao")){
+			if(casa.getCor().equals("preto"))
+		}
+	}
+
+	public boolean moverPeca(Casa origem, Casa destino, ArrayList<Coordenada> listaMovimentos){
+		Coordenada coordDestino = destino.getCoordenada();
+		for(Coordenada coord: listaMovimentos){
+			if(coordDestino.x() == coord.x() && coordDestino.y() == coord.y()){
+				System.out.println("Local valido");
+
+				destino.getBotao().setIcon(origem.getBotao().getIcon());
+				this.trocarIcone(origem.getPeca(), destino)
+				this.adicionarIconeCasa(origem);
+				destino.setPeca(origem.getPeca());
+				origem.setPeca(null);
+
+				if(destino.getPeca().getTag().equals("peao")) // Caso especial para o peao
+					((Peao)destino.getPeca()).setPrimeiraJogada(false);
+				return true;
+			}
+		}
+		return true;
+	}
+
 }

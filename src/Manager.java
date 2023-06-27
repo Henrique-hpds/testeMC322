@@ -15,7 +15,7 @@ public class Manager{
 
 	private Perfil jogadorBrancas, jogadorPretas;
 	private List<Peca> pecasPretasCapturadas, pecasBrancasCapturadas;
-	
+
     public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
         this.jogadorBrancas = jogadorBranco;
 		this.jogadorPretas = jogadorPreto;
@@ -47,18 +47,9 @@ public class Manager{
 		nomeBrancas.setBounds(880, 30, 110, 30);
 		nomePretas.setBounds(1080, 30, 110, 30);
 
-		try {
-			nomePretas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes/BebasNeue-Regular.ttf").openStream()));
-			nomeBrancas.setFont(Font.createFont(Font.TRUETYPE_FONT, getClass().getResource("../fontes/BebasNeue-Regular.ttf").openStream()));
-		} catch(IOException ex){}
-		catch(FontFormatException ex2) {
-			nomeBrancas.setFont(new Font("Arial", Font.BOLD, 12));
-			nomePretas.setFont(new Font("Arial", Font.BOLD, 12));	
-
-		}
-
 		tela.add(nomeBrancas);
 		tela.add(nomePretas);
+
 
 		tela.setLayout(null);
 		tela.setVisible(true);

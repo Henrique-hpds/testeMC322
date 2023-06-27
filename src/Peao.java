@@ -2,7 +2,7 @@ import java.util.ArrayList;
 
 public class Peao extends Peca{
 
-    boolean primeiraJogada;
+    private boolean primeiraJogada;
     
     public Peao(String cor, Coordenada posicao){
         super(cor, posicao, 1, "peao");
@@ -27,11 +27,24 @@ public class Peao extends Peca{
 
         if(primeiraJogada) {
             //Aplicar aqui condições para primeira jogada (andar duas casas)
+            System.out.println("TESTE 1");
             for(int i = 0; i <= 2; i++) {
-                Coordenada coord = new Coordenada(i, 0);
+                Coordenada coord = new Coordenada(0, i);
                 Coordenada soma = getPosicao().soma(coord);
-                if(limites.contains(soma)) {
+                boolean contem = false; 
+                //System.out.println(soma);
+                //System.out.println("------");
+                for (Coordenada coorde1: limites) {
+                    //System.out.println(coorde1);
+                    if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                        contem = true;
+                        //System.out.println("FOI");
+                    }
+                }
+                if(contem) {
+                    System.out.println("TESTE 2");
                     if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                        System.out.println("TESTE 3");
                         movimentosPossiveis.add(soma);
                     }
                     else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
@@ -47,7 +60,7 @@ public class Peao extends Peca{
         else {
             //Restante
                 for(int i = 0; i <= 1; i++) {
-                Coordenada coord = new Coordenada(i, 0);
+                Coordenada coord = new Coordenada(0, i);
                 Coordenada soma = getPosicao().soma(coord);
                 if(limites.contains(soma)) {
                     if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
@@ -63,11 +76,16 @@ public class Peao extends Peca{
                 }
             }
         }
-        for (Coordenada coord: movimentosPossiveis){
-            //Coordenada soma = getPosicao().soma(coord);
-            if (Validacao.coordenadaValida(coord))
-                movimentosLegais.add(coord);
-        }
-        return movimentosLegais;
+        // for (Coordenada coord: movimentosPossiveis){
+        //     //Coordenada soma = getPosicao().soma(coord);
+        //     if (Validacao.coordenadaValida(coord))
+        //         movimentosLegais.add(coord);
+        // }
+        System.out.println(movimentosPossiveis);
+        return movimentosPossiveis;
+    }
+
+    public void setPrimeiraJogada(boolean bool){
+        primeiraJogada = bool;
     }
 }
