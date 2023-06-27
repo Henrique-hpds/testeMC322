@@ -44,15 +44,15 @@ public class TelaJogadores extends JFrame implements ActionListener {
         opcoesBranco = new JComboBox<String>(listaJogadoresString);
         opcoesPreto = new JComboBox<String>(listaJogadoresString);
 
-	    textoJogadorBranco = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "<br>Empates: " + listaJogadores.get(0).getEmpates() + "<br>Taxa Vitoria: " + listaJogadores.get(0).getTaxaVitoria() * 100 + "%</html>");
-        textoJogadorPreto = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "<br>Empates: " + listaJogadores.get(0).getEmpates() + "<br>Taxa Vitoria: " + listaJogadores.get(0).getTaxaVitoria() * 100 + "%</html>");
+	    textoJogadorBranco = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "</html>");
+        textoJogadorPreto = new JLabel("<html>Vitorias: " + listaJogadores.get(0).getVitorias() + "<br>Derrotas: " + listaJogadores.get(0).getDerrotas() + "</html>");
 
 	
 	    opcoesBranco.addItemListener(new ItemListener() {
             @Override
             public void itemStateChanged(ItemEvent ev){
                 Perfil perfil = getPerfilPorNome((String)opcoesBranco.getSelectedItem());
-                textoJogadorBranco.setText("<html>Vitorias: " + perfil.getVitorias() + "<br>Derrotas: " + perfil.getDerrotas() + "<br>Empates: " + perfil.getEmpates() + "<br>Taxa Vitoria: " + perfil.getTaxaVitoria() * 100 + "%</html>");
+                textoJogadorBranco.setText("<html>Vitorias: " + perfil.getVitorias() + "<br>Derrotas: " + perfil.getDerrotas() + "</html>");
             }
         });
 
@@ -60,7 +60,7 @@ public class TelaJogadores extends JFrame implements ActionListener {
             @Override
             public void itemStateChanged(ItemEvent ev){
                 Perfil perfil = getPerfilPorNome((String)opcoesPreto.getSelectedItem());
-                textoJogadorPreto.setText("<html>Vitorias: " + perfil.getVitorias() + "<br>Derrotas: " + perfil.getDerrotas() + "<br>Empates: " + perfil.getEmpates() + "<br>Taxa Vitoria: " + perfil.getTaxaVitoria() * 100 + "%</html>");
+                textoJogadorPreto.setText("<html>Vitorias: " + perfil.getVitorias() + "<br>Derrotas: " + perfil.getDerrotas() + "</html>");
             }
         });
    
@@ -127,8 +127,8 @@ public class TelaJogadores extends JFrame implements ActionListener {
         opcoesBranco.setBounds(100, 130, 150, 50);
         opcoesPreto.setBounds(300, 130, 150, 50);
         botaoOK.setBounds(500, 130, 70, 70);
-        textoJogadorBranco.setBounds(100, 170, 150, 100);
-        textoJogadorPreto.setBounds(300, 170, 150, 100);
+        textoJogadorBranco.setBounds(100, 150, 150, 100);
+        textoJogadorPreto.setBounds(300, 150, 150, 100);
         textoCriarConta.setBounds(180, 335, 300, 20);
         caixaTextoUsername.setBounds(180,365, 200, 30);
         botaoCriarConta.setBounds(400, 355, 150, 50);

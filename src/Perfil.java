@@ -5,13 +5,13 @@ import java.util.Hashtable;
 public class Perfil implements Entidade, Serializable {
     private static final long serialVersionUID = 100L;
     private String username;
-    private int vitorias, derrotas, empates;
+    private int vitorias, derrotas;
     private Dictionary<Perfil, Integer> placares; // Adversário: João -> Vitórias: 2
 
     public Perfil(String username){
         this.username = username;
         this.placares = new Hashtable<>();
-        vitorias = derrotas = empates = 0;
+        // vitorias = derrotas = empates = 0;
     }
     
     public boolean criar(){
@@ -23,9 +23,9 @@ public class Perfil implements Entidade, Serializable {
     }
 
     public double getTaxaVitoria(){
-        if (vitorias + derrotas + empates == 0)
-            return 0;
-        return (vitorias) / (vitorias + derrotas + empates);
+        if (vitorias + derrotas == 0)
+            return 1;
+        return (vitorias) / (vitorias + derrotas);
     }
 
     public String getUsername(){
@@ -34,10 +34,6 @@ public class Perfil implements Entidade, Serializable {
 
     public int getVitorias(){
         return vitorias;
-    }
-
-    public int getEmpates(){
-        return empates;
     }
 
     public int getDerrotas(){
@@ -50,10 +46,6 @@ public class Perfil implements Entidade, Serializable {
 
     public void adicionarVitoria(){
         vitorias++;
-    }
-
-    public void adicionarEmpate(){
-        empates++;
     }
 
     public void adicionarDerrota(){

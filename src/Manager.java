@@ -1,5 +1,3 @@
-import java.awt.Font;
-import java.awt.FontFormatException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,17 +65,38 @@ public class Manager{
 		this.tabuleiro = tabuleiro;
 	}
 
-	public static void gameOver(String cor){
-		// if(cor.equals("preto")){
-		// 	jogadorBrancas.adicionarDerrota();
-		// 	jogadorPretas.adicionarVitoria();
-		// } else if(cor.equals("branco")){
-		// 	jogadorBrancas.adicionarVitoria();
-		// 	jogadorPretas.adicionarDerrota();
-		// }
+	public static void gameOver(String cor){		
+		if(cor.equals("preto")){
+			jogadorPretas.adicionarDerrota();
+			jogadorBrancas.adicionarVitoria();
+		} else if(cor.equals("branco")){
+			jogadorPretas.adicionarVitoria();
+			jogadorBrancas.adicionarDerrota();
+		}
 
-		// ArrayList 
+		ArrayList<Perfil> jogadores = Leitura.lerPossiveisJogadores();
 
+		Runtime run = Runtime.getRuntime();
+
+		try {
+            run.exec("rm ../dadosJogadores/jogadores.ser");
+			run.exec("touch ../dadosJogadores/jogadores.ser");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    
+		for (Perfil atual : jogadores) {
+			if(atual.getUsername().equals(jogadorBrancas.getUsername())){
+				Leitura.gravarPerfil(jogadorBrancas);
+			}else if (atual.getUsername().equals(jogadorPretas.getUsername())){
+				Leitura.gravarPerfil(jogadorPretas);
+			}else Leitura.gravarPerfil(atual);
+		}
+
+
+
+
+		System.exit(0);
 		
 	}
 }
