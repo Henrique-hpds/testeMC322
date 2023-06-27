@@ -8,10 +8,7 @@ public class Torre extends Peca{
     
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
-        //ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
 
-
-        //// KANT
         for (int i = 1; i <= 7; i++){
             Coordenada coord = new Coordenada(0, i);
             Coordenada soma = coord.soma(getPosicao());

@@ -19,7 +19,6 @@ public class Coordenada{
     }
 
     public String toString(){
-        // return "(" + Integer.toString(x + 1) + ", " + Integer.toString(8 - y) + ")";
         return "(" + x + ", " + y + ")";
     }
 }

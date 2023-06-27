@@ -50,6 +50,7 @@ public class TestListener implements ActionListener{
             tabuleiro.moverPeca(casaOrigem, casa, listaMovimentos);
             casaOrigem = null;
         }
+        // tabuleiro.gameOver();
 
     }
 

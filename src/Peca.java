@@ -6,13 +6,6 @@ abstract public class Peca {
     private Coordenada posicao;
     private final String tag;
 
-    // public Peca() {
-    //     this.cor = "";
-    //     this.valor = 0;
-    //     this.posicao = null;
-    //     this.tag = "";
-    // }
-
     public Peca(String cor, Coordenada posicao, int valor, String tag) {
         this.cor = cor;
         this.valor = valor;
@@ -41,17 +34,6 @@ abstract public class Peca {
     }
 
     abstract public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro);
-    // {
-    //     ArrayList <Coordenada> movimentos = new ArrayList<Coordenada>();
-        
-    //     for (Coordenada coord: MOVIMENTO_PADRAO){
-    //         Coordenada soma = getPosicao().soma(coord);
-    //         if (Validacao.coordenadaValida(soma))
-    //             movimentos.add(soma);
-    //     }
-
-    //     return movimentos;
-    // }
 
     public static Peca comerPeca(Casa casa) {
         Peca peca = casa.getPeca();

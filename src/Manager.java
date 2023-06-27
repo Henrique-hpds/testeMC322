@@ -13,7 +13,7 @@ public class Manager{
     private JFrame tela;
     private Tabuleiro tabuleiro;
 
-	private Perfil jogadorBrancas, jogadorPretas;
+	private static Perfil jogadorBrancas, jogadorPretas;
 	private List<Peca> pecasPretasCapturadas, pecasBrancasCapturadas;
 
     public Manager(Perfil jogadorBranco, Perfil jogadorPreto){
@@ -67,4 +67,17 @@ public class Manager{
 		this.tabuleiro = tabuleiro;
 	}
 
+	public static void gameOver(String cor){
+		// if(cor.equals("preto")){
+		// 	jogadorBrancas.adicionarDerrota();
+		// 	jogadorPretas.adicionarVitoria();
+		// } else if(cor.equals("branco")){
+		// 	jogadorBrancas.adicionarVitoria();
+		// 	jogadorPretas.adicionarDerrota();
+		// }
+
+		// ArrayList 
+
+		
+	}
 }

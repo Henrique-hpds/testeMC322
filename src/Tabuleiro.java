@@ -249,6 +249,9 @@ public class Tabuleiro {
 				// destino.getBotao().setIcon(origem.getBotao().getIcon());
 				this.trocarIcone(origem.getPeca(), destino);
 				this.adicionarIconeCasa(origem);
+				if(destino.getPeca() instanceof Rei){
+					Manager.gameOver(destino.getPeca().getCor());
+				}
 				destino.setPeca(origem.getPeca());
 				origem.setPeca(null);
 
@@ -267,7 +270,7 @@ public class Tabuleiro {
 	// 	for(int i = 0; i < 8; i++) {
 	// 		for(int j = 0; j < 8; j++) {
 	// 			Peca peca = getCasa(i,j).getPeca();
-	// 			if(peca.getTag().equals("rei")) {
+	// 			if(peca != null && peca.getTag().equals("rei")) {
 	// 				corRei = peca.getCor();
 	// 				numeroReis++;
 	// 			}
@@ -279,9 +282,15 @@ public class Tabuleiro {
 	// 	} else {
 	// 		if(corRei.equals("preto")) {
 	// 			//preto ganhou
+	// 			Manager.getJogadorPretas().adicionarVitoria();
+	// 			Manager.getJogadorBrancas().adicionarDerrota();
+	// 			System.exit(0);
 	// 		} 
 	// 		else if(corRei.equals("branco")) {
 	// 			//branco ganhou
+	// 			Manager.getJogadorPretas().adicionarDerrota();
+	// 			Manager.getJogadorBrancas().adicionarVitoria();
+	// 			System.exit(0);
 	// 		}
 	// 		return true;
 	// 	}
