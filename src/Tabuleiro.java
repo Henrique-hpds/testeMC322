@@ -271,10 +271,9 @@ public class Tabuleiro {
 					System.out.println("Rei");
 					TestListener.setListaMovimentos(((Rei)peca).getPossiveisMovimentos(this));  
 				}
-			}
+			}  
 
-		} 
-		TestListener.setListaMovimentos(new ArrayList<Coordenada>());  
+		}
 	}  
 
 	public boolean moverPeca(Casa origem, Casa destino, ArrayList<Coordenada> listaMovimentos){
@@ -295,6 +294,7 @@ public class Tabuleiro {
 				destino.getPeca().setPosicao(destino.getCoordenada());
 				if(destino.getPeca().getTag().equals("peao")) // Caso especial para o peao
 					((Peao)destino.getPeca()).setPrimeiraJogada(false);
+					
 				if (destino.getPeca().getCor().equals("branco"))
 					jogador = "preto";
 				else
@@ -304,5 +304,9 @@ public class Tabuleiro {
 		}
 		return true;
 	}
+
+	// public ArrayList<Coordenada> todoMovimentosJogador(String jogador){
+
+	// }
 
 }
