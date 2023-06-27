@@ -12,39 +12,19 @@ public class TestListener implements ActionListener{
         this.tabuleiro = tabuleiro;
     }
 
+    public static void setListaMovimentos(ArrayList<Coordenada> listaMovimentos) {
+        TestListener.listaMovimentos = listaMovimentos;
+    }
+
+    public static void setCasaOrigem(Casa casaOrigem) {
+        TestListener.casaOrigem = casaOrigem;
+    }
+
     public void actionPerformed(ActionEvent ev){
         if (casaOrigem == null){
-            Peca peca = casa.getPeca();
-            if(peca != null){
-                String tipo = peca.getTag();
-                casaOrigem = casa;
-                if(tipo.equals("peao")){
-                    System.out.println("Peao");
-                    listaMovimentos = ((Peao)peca).getPossiveisMovimentos(tabuleiro);
-                }
-                else if(tipo.equals("torre")){
-                    System.out.println("Torre");
-                    listaMovimentos = ((Torre)peca).getPossiveisMovimentos(tabuleiro);     
-                }
-                else if(tipo.equals("cavalo")){
-                    System.out.println("Cavalo");
-                    listaMovimentos = ((Cavalo)peca).getPossiveisMovimentos(tabuleiro);
-                }
-                else if(tipo.equals("bispo")){
-                    System.out.println("Bispo"); 
-                    listaMovimentos = ((Bispo)peca).getPossiveisMovimentos(tabuleiro);     
-                }
-                else if(tipo.equals("rainha")){
-                    System.out.println("Rainha");
-                    listaMovimentos = ((Rainha)peca).getPossiveisMovimentos(tabuleiro);
-                }
-                else if(tipo.equals("rei")){
-                    System.out.println("Rei");
-                    listaMovimentos = ((Rei)peca).getPossiveisMovimentos(tabuleiro);  
-                }
-                for(Coordenada coord: listaMovimentos)
-                    System.out.println(coord);
-            }    
+            tabuleiro.movimentosValidos(casa);
+            for(Coordenada coord: listaMovimentos)
+                System.out.println(coord);  
         }
         else{
             tabuleiro.moverPeca(casaOrigem, casa, listaMovimentos);

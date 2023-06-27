@@ -55,7 +55,7 @@ public class Peao extends Peca {
             if(Validacao.coordenadaValida(somaTeste) && tabuleiro.getCasa(somaTeste.x(), somaTeste.y()).estaOcupado() && !getCor().equals(tabuleiro.getCasa(somaTeste.x(), somaTeste.y()).getPeca().getCor()))
                 movimentosPossiveis.add(somaTeste);                        
         }
-        System.out.println(movimentosPossiveis);
+
         return movimentosPossiveis;
     
     }

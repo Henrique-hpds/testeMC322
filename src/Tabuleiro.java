@@ -3,6 +3,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.util.ArrayList;
 public class Tabuleiro {
+	private String jogador = "branco";
     private Casa[][] matrizCasas;
     // casas vazias
     private static final Icon casaBranca = new ImageIcon("../imagens/bege.png");
@@ -240,6 +241,42 @@ public class Tabuleiro {
 		}
 	}
 
+	public void movimentosValidos(Casa casa){
+	    Peca peca = casa.getPeca();
+		if(peca != null){
+			if(peca.getCor().equals(jogador)){
+				String tipo = peca.getTag();
+				TestListener.setCasaOrigem(casa);
+				if(tipo.equals("peao")){
+					System.out.println("Peao");
+					TestListener.setListaMovimentos(((Peao)peca).getPossiveisMovimentos(this));
+				}
+				else if(tipo.equals("torre")){
+					System.out.println("Torre");
+					TestListener.setListaMovimentos(((Torre)peca).getPossiveisMovimentos(this));     
+				}
+				else if(tipo.equals("cavalo")){
+					System.out.println("Cavalo");
+					TestListener.setListaMovimentos(((Cavalo)peca).getPossiveisMovimentos(this));
+				}
+				else if(tipo.equals("bispo")){
+					System.out.println("Bispo"); 
+					TestListener.setListaMovimentos(((Bispo)peca).getPossiveisMovimentos(this));     
+				}
+				else if(tipo.equals("rainha")){
+					System.out.println("Rainha");
+					TestListener.setListaMovimentos(((Rainha)peca).getPossiveisMovimentos(this));
+				}
+				else if(tipo.equals("rei")){
+					System.out.println("Rei");
+					TestListener.setListaMovimentos(((Rei)peca).getPossiveisMovimentos(this));  
+				}
+			}
+
+		} 
+		TestListener.setListaMovimentos(new ArrayList<Coordenada>());  
+	}  
+
 	public boolean moverPeca(Casa origem, Casa destino, ArrayList<Coordenada> listaMovimentos){
 		Coordenada coordDestino = destino.getCoordenada();
 		for(Coordenada coord: listaMovimentos){
@@ -258,6 +295,10 @@ public class Tabuleiro {
 				destino.getPeca().setPosicao(destino.getCoordenada());
 				if(destino.getPeca().getTag().equals("peao")) // Caso especial para o peao
 					((Peao)destino.getPeca()).setPrimeiraJogada(false);
+				if (destino.getPeca().getCor().equals("branco"))
+					jogador = "preto";
+				else
+					jogador = "branco";
 				return true;
 			}
 		}
