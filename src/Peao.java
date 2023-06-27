@@ -25,51 +25,134 @@ public class Peao extends Peca{
             }
         }
         
-
-        if(primeiraJogada) {
-            //Aplicar aqui condições para primeira jogada (andar duas casas)
-            System.out.println("TESTE 1");
-            for(int i = 0; i <= 2; i++) {
-                Coordenada coord = new Coordenada(0, i);
-                Coordenada soma = getPosicao().soma(coord);
-                boolean contem = false; 
-                for (Coordenada coorde1: limites) {
-                    if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
-                        contem = true;
+        if(this.getCor() == "preto") {
+            if(primeiraJogada) {
+                //Aplicar aqui condições para primeira jogada (andar duas casas)
+                System.out.println("TESTE 1");
+                for(int i = 0; i <= 2; i++) {
+                    Coordenada coord = new Coordenada(0, i);
+                    Coordenada soma = getPosicao().soma(coord);
+                    boolean contem = false; 
+                    for (Coordenada coorde1: limites) {
+                        if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                            contem = true;
+                        }
+                    }
+                    if(contem) {
+                        Coordenada coleta1 = new Coordenada(soma.x() + 1, soma.y());
+                        Coordenada coleta2 = new Coordenada(soma.x() - 1, soma.y());
+                        if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                            System.out.println("TESTE 3");
+                            movimentosPossiveis.add(soma);
+                        }
+                        // else if((Validacao.coordenadaValida(coleta1)) && (!tabuleiro.getCasa(soma.x() + 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() + 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta1);
+                        //     //break;
+                        // }
+                        // else if((Validacao.coordenadaValida(coleta2)) && (!tabuleiro.getCasa(soma.x() - 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() - 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta2);
+                        //     //break;
+                        // }
                     }
                 }
-                if(contem) {
-                    if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                        System.out.println("TESTE 3");
-                        movimentosPossiveis.add(soma);
+            }
+            else {
+                //Restante
+                    for(int i = 0; i <= 1; i++) {
+                    Coordenada coord = new Coordenada(0, i);
+                    Coordenada soma = getPosicao().soma(coord);
+                    System.out.println("POSICAO");
+                    System.out.println(getPosicao());
+                    boolean contem = false;
+                    for (Coordenada coorde1: limites) {
+                        if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                            contem = true;
+                        }
                     }
-                    else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                        movimentosPossiveis.add(soma);
-                        break;
+                    if(contem) {
+                        Coordenada coleta1 = new Coordenada(soma.x() + 1, soma.y());
+                        Coordenada coleta2 = new Coordenada(soma.x() - 1, soma.y());
+                        if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                            movimentosPossiveis.add(soma);
+                        }
+                        // else if((Validacao.coordenadaValida(coleta1)) && (!tabuleiro.getCasa(soma.x() + 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() + 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta1);
+                        //     //break;
+                        // }
+                        // else if((Validacao.coordenadaValida(coleta2)) && (!tabuleiro.getCasa(soma.x() - 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() - 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta2);
+                        //     //break;
+                        // }
                     }
                 }
             }
         }
-        else {
-            //Restante
-                for(int i = 0; i <= 1; i++) {
-                Coordenada coord = new Coordenada(0, i);
-                Coordenada soma = getPosicao().soma(coord);
-                System.out.println("POSICAO");
-                System.out.println(getPosicao());
-                boolean contem = false;
-                for (Coordenada coorde1: limites) {
-                    if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
-                        contem = true;
+        if(this.getCor() == "branco") {
+            if(primeiraJogada) {
+                //Aplicar aqui condições para primeira jogada (andar duas casas)
+                System.out.println("TESTE 1");
+                for(int i = 0; i >= -2; i--) {
+                    Coordenada coord = new Coordenada(0, i);
+                    Coordenada soma = getPosicao().soma(coord);
+                    boolean contem = false; 
+                    for (Coordenada coorde1: limites) {
+                        if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                            contem = true;
+                        }
+                    }
+                    if(contem) {
+                        Coordenada coleta1 = new Coordenada(soma.x() + 1, soma.y());
+                        Coordenada coleta2 = new Coordenada(soma.x() - 1, soma.y());
+                        if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                            System.out.println("TESTE 3");
+                            movimentosPossiveis.add(soma);
+                        }
+                        // else if((Validacao.coordenadaValida(coleta1)) && (!tabuleiro.getCasa(soma.x() + 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() + 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta1);
+                        //     //break;
+                        // }
+                        // else if((Validacao.coordenadaValida(coleta2)) && (!tabuleiro.getCasa(soma.x() - 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() - 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta2);
+                        //     //break;
+                        // }
                     }
                 }
-                if(contem) {
-                    if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
-                        movimentosPossiveis.add(soma);
+            }
+            else {
+                //Restante
+                    for(int i = 0; i >= -1; i--) {
+                    Coordenada coord = new Coordenada(0, i);
+                    Coordenada soma = getPosicao().soma(coord);
+                    System.out.println("POSICAO");
+                    System.out.println(getPosicao());
+                    boolean contem = false;
+                    for (Coordenada coorde1: limites) {
+                        if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                            contem = true;
+                        }
                     }
-                    else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
-                        movimentosPossiveis.add(soma);
-                        break;
+                    if(contem) {
+                        Coordenada coleta1 = new Coordenada(soma.x() + 1, soma.y());
+                        Coordenada coleta2 = new Coordenada(soma.x() - 1, soma.y());
+                        if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                            movimentosPossiveis.add(soma);
+                        }
+                        // else if((Validacao.coordenadaValida(coleta1)) && (!tabuleiro.getCasa(soma.x() + 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() + 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta1);
+                        //     //break;
+                        // }
+                        // else if((Validacao.coordenadaValida(coleta2)) && (!tabuleiro.getCasa(soma.x() - 1, soma.y()).getPeca().getCor().equals(getCor())) &&
+                        // (tabuleiro.getCasa(soma.x() - 1, soma.y()).estaOcupado())){
+                        //     movimentosPossiveis.add(coleta2);
+                        //     //break;
+                        // }
                     }
                 }
             }

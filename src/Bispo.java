@@ -14,6 +14,46 @@ public class Bispo extends Peca{
 
         ArrayList <Coordenada> limites = new ArrayList<Coordenada>();
 
+        //// KANT
+        // for (int i = 1; i <= 7; i++){
+        //     Coordenada coord = new Coordenada(i, i);
+        //     Coordenada soma = coord.soma(getPosicao());
+        //     if(Validacao.coordenadaValida(soma) && !tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado())
+        //         break;
+        //     else
+        //         limites.add(soma);            
+        // }
+        // for (int i = 1; i <= 7; i++){
+        //     Coordenada coord = new Coordenada(-i, -i);
+        //     Coordenada soma = coord.soma(getPosicao());
+        //     if(Validacao.coordenadaValida(soma) && !tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado())
+        //         break;
+        //     else
+        //         limites.add(soma);            
+        // }
+        // for (int i = 1; i <= 7; i++){
+        //     Coordenada coord = new Coordenada(-i, i);
+        //     Coordenada soma = coord.soma(getPosicao());
+        //     if(Validacao.coordenadaValida(soma) && !tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado())
+        //         break;
+        //     else
+        //         limites.add(soma);            
+        // }
+        // for (int i = 1; i <= 7; i++){
+        //     Coordenada coord = new Coordenada(i, -i);
+        //     Coordenada soma = coord.soma(getPosicao());
+        //     if(Validacao.coordenadaValida(soma) && !tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado())
+        //         break;
+        //     else
+        //         limites.add(soma);            
+        // }
+        // System.out.println(limites);
+        // return limites;
+
+        ////
+
+
+
         for(int i = 0; i <= 7; i++) {
             for(int j = 0; j <= 7; j++) {
                 Coordenada coord = new Coordenada(i, j);
@@ -56,7 +96,7 @@ public class Bispo extends Peca{
                 if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                     movimentosPossiveis.add(coord);
                 }
-                else if(!tabuleiro.getCasa(-soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
                     movimentosPossiveis.add(soma);
                     break;
                 }

@@ -11,11 +11,8 @@ public class Rainha extends Peca{
     
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosVertical = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosHorizontal = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosDiagonal1 = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosDiagonal2 = new ArrayList<Coordenada>();
+        ArrayList <Coordenada> limites = new ArrayList<Coordenada>();
+
 
         // for(int i = -7; i <= 7; i++) {
         //     Coordenada coord = new Coordenada(i, 0);
@@ -112,6 +109,102 @@ public class Rainha extends Peca{
         //     if (Validacao.coordenadaValida(coord))
         //         movimentosLegais.add(coord);
         // }
-        return movimentosLegais;
+        for(int i = 0; i <= 7; i++) {
+            for(int j = 0; j <= 7; j++) {
+                Coordenada coord = new Coordenada(i, j);
+                limites.add(coord);
+            }
+        }
+
+        for(int i = -7; i <= 7; i++) {
+            Coordenada coord = new Coordenada(i, i);
+            Coordenada soma = getPosicao().soma(coord);
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    //break;
+                }
+            }
+        }
+        for(int i = -7; i <= 7; i++) {
+            Coordenada coord = new Coordenada(-i, i);
+            Coordenada soma = getPosicao().soma(coord);
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(coord);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    break;
+                }
+                else {
+                    //break;
+                }
+            }
+        }
+        for(int i = -7; i <= 7; i++) {
+            Coordenada coord = new Coordenada(i, 0);
+            Coordenada soma = getPosicao().soma(coord);
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    //break;
+                }
+                else {
+                    //break;
+                }
+            }
+        }
+
+        for(int i = -7; i <= 7; i++) {
+            Coordenada coord = new Coordenada(0, i);
+            Coordenada soma = getPosicao().soma(coord);
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
+                    movimentosPossiveis.add(soma);
+                }
+                else if(!tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
+                    movimentosPossiveis.add(soma);
+                    //break;
+                }
+                else {
+                    //break;
+                }
+            }
+        }
+        return movimentosPossiveis;
     }
 }
