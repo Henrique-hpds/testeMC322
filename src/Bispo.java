@@ -10,7 +10,7 @@ public class Bispo extends Peca{
 
     public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro){
         ArrayList <Coordenada> movimentosPossiveis = new ArrayList<Coordenada>();
-        ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
+        //ArrayList <Coordenada> movimentosLegais = new ArrayList<Coordenada>();
 
         ArrayList <Coordenada> limites = new ArrayList<Coordenada>();
 
@@ -20,15 +20,17 @@ public class Bispo extends Peca{
                 limites.add(coord);
             }
         }
-        // for (Coordenada coord: movimentosPossiveis){
-        //     if (Validacao.coordenadaValida(coord))
-        //         movimentosPossiveis.add(coord);
-        // }
 
         for(int i = -7; i <= 7; i++) {
             Coordenada coord = new Coordenada(i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(limites.contains(soma)) {
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
                 if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                     movimentosPossiveis.add(soma);
                 }
@@ -37,15 +39,21 @@ public class Bispo extends Peca{
                     break;
                 }
                 else {
-                    break;
+                    //break;
                 }
             }
         }
         for(int i = -7; i <= 7; i++) {
-            Coordenada coord = new Coordenada(i, i);
+            Coordenada coord = new Coordenada(-i, i);
             Coordenada soma = getPosicao().soma(coord);
-            if(limites.contains(soma)) {
-                if(!tabuleiro.getCasa(-soma.x(), soma.y()).estaOcupado()) {
+            boolean contem = false; 
+            for (Coordenada coorde1: limites) {
+                if ((coorde1.x() == soma.x()) && (coorde1.y() == soma.y())) {
+                    contem = true;
+                }
+            }
+            if(contem) {
+                if(!tabuleiro.getCasa(soma.x(), soma.y()).estaOcupado()) {
                     movimentosPossiveis.add(coord);
                 }
                 else if(!tabuleiro.getCasa(-soma.x(), soma.y()).getPeca().getCor().equals(getCor())) {
@@ -53,10 +61,11 @@ public class Bispo extends Peca{
                     break;
                 }
                 else {
-                    break;
+                    //break;
                 }
             }
         }
-        return movimentosLegais;
+        System.out.println(movimentosPossiveis);
+        return movimentosPossiveis;
     }
 }

@@ -41,9 +41,9 @@ public class Tabuleiro {
         for (int i = 0; i < 8; i++)
             for (int j = 0; j < 8; j++){
                 if((i + j) % 2 == 0)
-                    matrizCasas[i][j] =  new Casa("Preto", i, j);
+                    matrizCasas[i][j] =  new Casa("branca", i, j);
 				else
-					matrizCasas[i][j] =  new Casa("Branco",  i, j);
+					matrizCasas[i][j] =  new Casa("preta",  i, j);
 				matrizCasas[i][j].setPeca(null);
             }
 		
@@ -95,10 +95,10 @@ public class Tabuleiro {
 		matrizCasas[7][0].setPeca(new Torre("preto", new Coordenada(7, 0)));
 
 		adicionarBotao(torreBrancaCasaPreta, 0, 7);
-		matrizCasas[0][7].setPeca(new Torre("branca", new Coordenada(0, 7)));
+		matrizCasas[0][7].setPeca(new Torre("branco", new Coordenada(0, 7)));
 
 		adicionarBotao(torreBrancaCasaBranca, 7, 7);
-		matrizCasas[7][7].setPeca(new Torre("branca", new Coordenada(7, 7)));
+		matrizCasas[7][7].setPeca(new Torre("branco", new Coordenada(7, 7)));
 
 		adicionarBotao(cavaloPretoCasaPreta, 1, 0);
 		matrizCasas[1][0].setPeca(new Cavalo("preto", new Coordenada(1, 0)));
@@ -128,7 +128,7 @@ public class Tabuleiro {
 		matrizCasas[3][0].setPeca(new Rainha("preto", new Coordenada(3, 0)));
 		
 		adicionarBotao(rainhaBrancaCasaBranca, 3, 7);	
-		matrizCasas[3][7].setPeca(new Rainha("branca", new Coordenada(3, 7)));
+		matrizCasas[3][7].setPeca(new Rainha("branco", new Coordenada(3, 7)));
 		
 		adicionarBotao(reiPretoCasaBranca, 4, 0);
 		matrizCasas[4][0].setPeca(new Rei("preto", new Coordenada(4, 0)));
@@ -155,7 +155,88 @@ public class Tabuleiro {
 
 	public void trocarIcone(Peca peca, Casa casa){
 		if(peca.getTag().equals("peao")){
-			if(casa.getCor().equals("preto"))
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(peaoPretoCasaPreta);
+				else
+					casa.getBotao().setIcon(peaoPretoCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(peaoBrancoCasaPreta);
+				else
+					casa.getBotao().setIcon(peaoBrancoCasaBranca);
+			}
+		}
+		else if(peca.getTag().equals("cavalo")){
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(cavaloPretoCasaPreta);
+				else
+					casa.getBotao().setIcon(cavaloPretoCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(cavaloBrancoCasaPreta);
+				else
+					casa.getBotao().setIcon(cavaloBrancoCasaBranca);
+			}
+		}
+		else if(peca.getTag().equals("bispo")){
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(bispoPretoCasaPreta);
+				else
+					casa.getBotao().setIcon(bispoPretoCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(bispoBrancoCasaPreta);
+				else
+					casa.getBotao().setIcon(bispoBrancoCasaBranca);
+			}
+		}
+		else if(peca.getTag().equals("torre")){
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(torrePretaCasaPreta);
+				else
+					casa.getBotao().setIcon(torrePretaCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(torreBrancaCasaPreta);
+				else
+					casa.getBotao().setIcon(torreBrancaCasaBranca);
+			}
+		}
+		else if(peca.getTag().equals("rainha")){
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(rainhaPretaCasaPreta);
+				else
+					casa.getBotao().setIcon(rainhaPretaCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(rainhaBrancaCasaPreta);
+				else
+					casa.getBotao().setIcon(rainhaBrancaCasaBranca);
+			}
+		}
+		else if(peca.getTag().equals("rei")){
+			if(peca.getCor().equals("preto")){
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(reiPretoCasaPreta);
+				else
+					casa.getBotao().setIcon(reiPretoCasaBranca);
+			}
+			else{
+				if(casa.getCor().equals("preta"))
+					casa.getBotao().setIcon(reiBrancoCasaPreta);
+				else
+					casa.getBotao().setIcon(reiBrancoCasaBranca);
+			}
 		}
 	}
 
@@ -165,12 +246,13 @@ public class Tabuleiro {
 			if(coordDestino.x() == coord.x() && coordDestino.y() == coord.y()){
 				System.out.println("Local valido");
 
-				destino.getBotao().setIcon(origem.getBotao().getIcon());
-				this.trocarIcone(origem.getPeca(), destino)
+				// destino.getBotao().setIcon(origem.getBotao().getIcon());
+				this.trocarIcone(origem.getPeca(), destino);
 				this.adicionarIconeCasa(origem);
 				destino.setPeca(origem.getPeca());
 				origem.setPeca(null);
 
+				destino.getPeca().setPosicao(destino.getCoordenada());
 				if(destino.getPeca().getTag().equals("peao")) // Caso especial para o peao
 					((Peao)destino.getPeca()).setPrimeiraJogada(false);
 				return true;
