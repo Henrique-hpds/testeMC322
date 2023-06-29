@@ -247,31 +247,31 @@ public class Tabuleiro {
 		if(peca != null){
 			if(peca.getCor().equals(jogador)){
 				String tipo = peca.getTag();
-				TestListener.setCasaOrigem(casa);
+				Listener.setCasaOrigem(casa);
 				if(tipo.equals("peao")){
 					System.out.println("Peao");
-					TestListener.setListaMovimentos(((Peao)peca).getPossiveisMovimentos(this));
+					Listener.setListaMovimentos(((Peao)peca).getPossiveisMovimentos(this));
 				}
 				else if(tipo.equals("torre")){
 					System.out.println("Torre");
-					TestListener.setListaMovimentos(((Torre)peca).getPossiveisMovimentos(this));     
+					Listener.setListaMovimentos(((Torre)peca).getPossiveisMovimentos(this));     
 				}
 				else if(tipo.equals("cavalo")){
 					System.out.println("Cavalo");
-					TestListener.setListaMovimentos(((Cavalo)peca).getPossiveisMovimentos(this));
+					Listener.setListaMovimentos(((Cavalo)peca).getPossiveisMovimentos(this));
 				}
 				else if(tipo.equals("bispo")){
 					System.out.println("Bispo"); 
-					TestListener.setListaMovimentos(((Bispo)peca).getPossiveisMovimentos(this));     
+					Listener.setListaMovimentos(((Bispo)peca).getPossiveisMovimentos(this));     
 				}
 				else if(tipo.equals("rainha")){
 					System.out.println("Rainha");
-					TestListener.setListaMovimentos(((Rainha)peca).getPossiveisMovimentos(this));
+					Listener.setListaMovimentos(((Rainha)peca).getPossiveisMovimentos(this));
 				}
 				else if(tipo.equals("rei")){
 					System.out.println("Rei");
 					((Rei)peca).setSelecionado(true);
-					TestListener.setListaMovimentos(((Rei)peca).getPossiveisMovimentos(this));  
+					Listener.setListaMovimentos(((Rei)peca).getPossiveisMovimentos(this));  
 				}
 			}  
 

@@ -33,7 +33,7 @@ public class Manager{
 				Casa casa = tabuleiro.getCasa(i, j);
 				JButton botao = casa.getBotao();
 
-				TestListener teste = new TestListener(casa, tabuleiro);
+				Listener teste = new Listener(casa, tabuleiro);
 				casa.getBotao().addActionListener(teste);
 
 				tela.add(botao);

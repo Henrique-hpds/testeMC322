@@ -1,23 +1,23 @@
 import java.awt.event.*;
 import java.util.ArrayList;
 
-public class TestListener implements ActionListener{
+public class Listener implements ActionListener{
     private Casa casa;
     private Tabuleiro tabuleiro;
     private static ArrayList<Coordenada> listaMovimentos = null;
     private static Casa casaOrigem = null;
 
-    public TestListener (Casa casa, Tabuleiro tabuleiro){
+    public Listener (Casa casa, Tabuleiro tabuleiro){
         this.casa = casa;
         this.tabuleiro = tabuleiro;
     }
 
     public static void setListaMovimentos(ArrayList<Coordenada> listaMovimentos) {
-        TestListener.listaMovimentos = listaMovimentos;
+        Listener.listaMovimentos = listaMovimentos;
     }
 
     public static void setCasaOrigem(Casa casaOrigem) {
-        TestListener.casaOrigem = casaOrigem;
+        Listener.casaOrigem = casaOrigem;
     }
 
     public void actionPerformed(ActionEvent ev){
