@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Peao extends Peca {
 
     private boolean primeiraJogada;
-    
+
     public Peao(String cor, Coordenada posicao){
         super(cor, posicao, 1, "peao");
         this.primeiraJogada = true;
@@ -58,6 +58,10 @@ public class Peao extends Peca {
 
         return movimentosPossiveis;
     
+    }
+
+    public boolean isPrimeiraJogada() {
+        return primeiraJogada;
     }
 
     public void setPrimeiraJogada(boolean bool){

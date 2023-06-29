@@ -84,7 +84,7 @@ public class Rainha extends Peca{
             else{
                 if(Validacao.coordenadaValida(soma) && !getCor().equals(tabuleiro.getCasa(soma.x(), soma.y()).getPeca().getCor()))
                     movimentosPossiveis.add(soma);
-                break;
+                break;  
             }
         }
         for (int i = 1; i <= 7; i++){

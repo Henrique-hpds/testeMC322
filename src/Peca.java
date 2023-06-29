@@ -34,11 +34,4 @@ abstract public class Peca {
     }
 
     abstract public ArrayList<Coordenada> getPossiveisMovimentos(Tabuleiro tabuleiro);
-
-    public static Peca comerPeca(Casa casa) {
-        Peca peca = casa.getPeca();
-        casa.setPeca(null);
-        return peca;
-    }
-
 }
